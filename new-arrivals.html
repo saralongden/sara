@@ -30,7 +30,7 @@
   .poster {
     position: relative;
     width: 1200px;
-    height: 2100px;
+    height: 1960px;
     background: var(--cream);
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
@@ -157,20 +157,6 @@
   .feature .big i { font-family: 'Libre Caslon Text', serif; font-size: 30px; display: block; margin-bottom: 6px; }
   .feature .s { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 15px; opacity: .9; }
 
-  /* ---------- Footer ---------- */
-  .footer {
-    position: absolute; left: 0; right: 0; bottom: 0; height: 190px;
-    background: linear-gradient(180deg, var(--cream), var(--blush));
-    border-top: 1px solid rgba(175,138,83,.35);
-    color: var(--oxford);
-    display: flex; align-items: center; justify-content: space-between;
-    padding: 0 110px;
-  }
-  .footer .left .k { font-size: 11px; letter-spacing: .45em; color: var(--antique); font-weight: 600; }
-  .footer .left .v { margin-top: 10px; font-family: 'Libre Caslon Text', serif; font-size: 30px; }
-  .footer .right { text-align: center; }
-  .footer .right img { width: 250px; display: block; }
-  .footer .right span { font-family: 'Libre Caslon Text', serif; font-size: 12px; letter-spacing: .3em; color: var(--oxford); }
 
   /* Fit the 1200px canvas to small screens when viewing */
   @media (max-width: 1240px) {
@@ -194,15 +180,6 @@
 
   <main class="grid" id="grid"></main>
 
-  <footer class="footer">
-    <div class="left">
-      <div class="k">THE WOMEN’S COLLECTION</div>
-      <div class="v">In Store Now</div>
-    </div>
-    <div class="right">
-      <img src="rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
-    </div>
-  </footer>
 </div>
 
 <script>
@@ -235,7 +212,7 @@
     grid.insertAdjacentHTML('beforeend', `
       <aside class="feature" style="grid-column: span ${span}">
         <div class="k">TRAVISMATHEW</div>
-        <div class="big"><i>Discover</i>${span > 1 ? 'the full collection' : 'The Edit'}</div>
+        <div class="big"><i>Discover</i>${span > 1 ? 'the full collection in store' : 'in store'}</div>
       </aside>`);
   }
 
@@ -244,7 +221,7 @@
     const el = document.getElementById('poster');
     const s = Math.min(1, (window.innerWidth - 16) / 1200);
     el.style.transform = s < 1 ? `scale(${s})` : '';
-    document.body.style.height = s < 1 ? (2100 * s) + 'px' : '';
+    document.body.style.height = s < 1 ? (1960 * s) + 'px' : '';
   }
   if (!new URLSearchParams(location.search).has('export')) { window.addEventListener('resize', fit); fit(); }
 </script>
