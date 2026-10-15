@@ -3,18 +3,20 @@
 Usage: python3 tools/cutout.py <input image> [<input image> ...]
 Writes products/canva/<name>.png (8-bit RGBA, sRGB, no layers, trimmed with even padding).
 """
+import os
 import sys
 from pathlib import Path
 
 import numpy as np
 from PIL import Image
+from scipy.ndimage import gaussian_filter
 from rembg import new_session, remove
 
 OUT = Path(__file__).resolve().parent.parent / "products" / "canva"
 PAD = 0.04          # transparent margin around the garment, as a fraction of its size
 MAX_SIDE = 2400     # plenty for print, light enough for Canva
 
-session = new_session("isnet-general-use")
+session = new_session(os.environ.get("CUTOUT_MODEL", "birefnet-general"))
 
 
 def cut(path: Path) -> Path:
@@ -22,14 +24,20 @@ def cut(path: Path) -> Path:
     alpha = np.asarray(remove(src, session=session, only_mask=True), dtype=np.float32) / 255
 
     # Tidy the matte: drop faint haze (e.g. soft floor shadows), keep anti-aliased edges
-    alpha = np.clip((alpha - 0.08) / 0.84, 0, 1)
+    alpha = np.clip((alpha - 0.15) / 0.75, 0, 1)
 
-    # Decontaminate edge colour so no grey/white fringe shows on dark Canva backgrounds
+    # Decontaminate edge colour so no background fringe shows on Canva backgrounds.
+    # Background colour is estimated locally (works for studio greys and on-course photos).
     rgb = np.asarray(src, dtype=np.float32)
-    bg = np.median(np.concatenate([rgb[:8].reshape(-1, 3), rgb[-8:].reshape(-1, 3),
-                                   rgb[:, :8].reshape(-1, 3), rgb[:, -8:].reshape(-1, 3)]), axis=0)
+    bgw = (alpha < 0.02).astype(np.float32)
+    sigma = max(src.size) / 150
+    num = np.stack([gaussian_filter(rgb[..., c] * bgw, sigma) for c in range(3)], -1)
+    den = gaussian_filter(bgw, sigma)[..., None]
+    bg = num / np.maximum(den, 1e-4)
     a = alpha[..., None]
-    fg = np.where(a > 0.02, (rgb - (1 - a) * bg) / np.maximum(a, 0.02), rgb)
+    fg = (rgb - (1 - a) * bg) / np.maximum(a, 0.05)
+    # only correct the soft edge; leave solid areas untouched
+    fg = np.where(a > 0.97, rgb, fg)
     fg = np.clip(fg, 0, 255)
 
     rgba = Image.fromarray(np.dstack([fg, alpha * 255]).astype(np.uint8), "RGBA")
