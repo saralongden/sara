@@ -1,0 +1,95 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Women's On-Course Instagram</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Royal Melbourne Golf Club palette — matches new-arrivals.html */
+  :root { --oxford:#293349; --onyx:#3B4041; --paper:#FFFDFA; --blush:#EDE4DB; --cream:#F7F2EC; --antique:#AF8A53; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); }
+
+  /* Instagram portrait 4:5 — exported at 2x = 2160 x 2700 */
+  .post {
+    position: relative; width: 1080px; height: 1350px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 14%, rgba(255,255,255,.6), transparent 70%),
+      linear-gradient(180deg, var(--blush) 0%, var(--cream) 45%, var(--cream) 100%);
+    font-family: 'Montserrat', sans-serif; color: var(--oxford); text-align: center;
+  }
+  .post::after { content:""; position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(90deg, rgba(175,138,83,.03) 0 1px, transparent 1px 14px); }
+  .frame { position:absolute; inset:24px; border:1px solid rgba(175,138,83,.5); z-index:5; pointer-events:none; }
+  .frame::after { content:""; position:absolute; inset:6px; border:1px solid rgba(175,138,83,.22); }
+
+  header { position:absolute; top:62px; left:0; right:0; }
+  .crest { width:210px; display:block; margin:0 auto; filter: drop-shadow(0 2px 4px rgba(120,90,50,.18)); }
+  .club { margin-top:14px; font-size:13px; letter-spacing:.32em; padding-left:.32em; color:var(--oxford); }
+  .eyebrow { margin-top:26px; display:inline-flex; align-items:center; gap:18px;
+    font-size:13px; font-weight:600; letter-spacing:.5em; padding-left:.5em; }
+  .eyebrow::before, .eyebrow::after { content:""; width:56px; height:1px; background:var(--antique); opacity:.75; }
+  h1 { margin-top:14px; font-family:'Libre Caslon Display', serif; font-weight:400;
+    font-size:104px; line-height:.92; color:var(--antique); }
+  .sub { margin-top:10px; font-family:'Libre Caslon Text', serif; font-style:italic; font-size:34px; }
+
+  /* Adaptive image grid — fills the same band whatever the number of images */
+  .grid { position:absolute; left:72px; right:72px; top:420px; height:770px;
+    display:grid; gap:20px; z-index:2; }
+  .card { background:var(--paper); display:flex; align-items:center; justify-content:center;
+    padding:16px; overflow:hidden; min-height:0;
+    box-shadow: 0 18px 36px -22px rgba(120,90,50,.45), 0 0 0 1px rgba(175,138,83,.2); }
+  .card img { max-width:100%; max-height:100%; object-fit:contain; mix-blend-mode:multiply; }
+  .card.photo { padding:0; }            /* lifestyle shots fill the tile */
+  .card.photo img { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; mix-blend-mode:normal; }
+  .placeholder { width:100%; height:100%; border:1px dashed rgba(168,140,90,.6); display:flex;
+    align-items:center; justify-content:center; color:rgba(168,140,90,.95);
+    font-size:12px; letter-spacing:.3em; text-transform:uppercase; }
+
+  footer { position:absolute; left:0; right:0; bottom:62px; }
+  .cta { display:inline-block; background:var(--antique); color:var(--paper);
+    font-size:15px; font-weight:500; letter-spacing:.42em; padding:14px 30px 14px calc(30px + .42em); }
+  .tag { margin-top:12px; font-family:'Libre Caslon Text', serif; font-style:italic; font-size:19px; color:var(--onyx); }
+</style>
+</head>
+<body>
+<div class="post" id="post">
+  <div class="frame"></div>
+  <header>
+    <img class="crest" src="../rmgc-crest.png" alt="">
+    <div class="club">THE ROYAL MELBOURNE GOLF CLUB</div>
+    <div class="eyebrow">IN STORE NOW</div>
+    <h1>New Arrivals</h1>
+    <div class="sub">Women’s On-Course Fashion</div>
+  </header>
+  <main class="grid" id="grid"></main>
+  <footer>
+    <div class="cta">SHOP THE PRO SHOP</div>
+    <div class="tag">Discover the full collection in store</div>
+  </footer>
+</div>
+<script>
+  // window.IMAGES is injected by build.js: [{src, photo}]
+  const imgs = window.IMAGES || [];
+  const n = Math.max(imgs.length, 1);
+  const layouts = {1:[1,1],2:[2,1],3:[3,1],4:[2,2],5:[3,2],6:[3,2],7:[4,2],8:[4,2],9:[3,3]};
+  const [cols, rows] = layouts[n] || [4, Math.ceil(n/4)];
+  const grid = document.getElementById('grid');
+  grid.style.gridTemplateColumns = `repeat(${cols}, 1fr)`;
+  grid.style.gridTemplateRows = `repeat(${rows}, 1fr)`;
+  // 1 image: keep a portrait tile centred instead of a very wide one
+  if (n === 1) { grid.style.left = '250px'; grid.style.right = '250px'; }
+  (imgs.length ? imgs : [null]).forEach((im, i) => {
+    const c = document.createElement('div');
+    c.className = 'card' + (im && im.photo ? ' photo' : '');
+    c.innerHTML = im ? `<img src="${im.src}" alt="">` : '<div class="placeholder">Your image here</div>';
+    grid.appendChild(c);
+  });
+  // An odd image count on a 2-row grid: centre the last row by spanning
+  const rem = imgs.length % cols;
+  if (rows > 1 && rem && cols - rem === 1 && imgs.length > 4) {
+    grid.lastChild.style.gridColumn = `span ${cols - rem + 1}`;
+  }
+</script>
+</body>
+</html>
