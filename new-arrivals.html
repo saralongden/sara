@@ -16,7 +16,12 @@
     --chesnut: #C4482A;
     --onyx: #3B4041;
     --sand: #F2F3EE;
-    --paper: #FBFBF8;
+    --paper: #FFFDFA;
+    /* soft tones sampled from the Women's Arrivals web banner */
+    --blush: #EDE4DB;
+    --cream: #F7F2EC;
+    --stone: #CCBAA3;
+    --antique: #AF8A53;
   }
   * { box-sizing: border-box; margin: 0; padding: 0; }
   html, body { background: #d9d9d4; }
@@ -26,7 +31,7 @@
     position: relative;
     width: 1200px;
     height: 2100px;
-    background: var(--sand);
+    background: var(--cream);
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
     color: var(--oxford);
@@ -38,60 +43,60 @@
     position: absolute; inset: 0 0 auto 0;
     height: 940px;
     background:
-      radial-gradient(ellipse 70% 60% at 50% 18%, rgba(211,188,140,.10), transparent 70%),
-      var(--oxford);
+      radial-gradient(ellipse 60% 55% at 50% 30%, rgba(255,255,255,.55), transparent 70%),
+      linear-gradient(180deg, var(--blush) 0%, var(--blush) 70%, var(--cream) 100%);
     text-align: center;
-    color: var(--sand);
+    color: var(--oxford);
     padding-top: 84px;
   }
   .masthead::after { /* fine pinstripe texture */
     content: ""; position: absolute; inset: 0;
-    background: repeating-linear-gradient(90deg, rgba(211,188,140,.035) 0 1px, transparent 1px 14px);
+    background: repeating-linear-gradient(90deg, rgba(175,138,83,.035) 0 1px, transparent 1px 16px);
     pointer-events: none;
   }
   .frame {
     position: absolute; inset: 28px;
-    border: 1px solid rgba(211,188,140,.55);
+    border: 1px solid rgba(175,138,83,.45);
     pointer-events: none; z-index: 5;
   }
   .frame::after {
     content: ""; position: absolute; inset: 6px;
-    border: 1px solid rgba(211,188,140,.25);
+    border: 1px solid rgba(175,138,83,.2);
   }
 
-  .crest { width: 250px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25)); }
-  .lockup { margin-top: 18px; font-weight: 400; letter-spacing: .32em; font-size: 15px; line-height: 1.7; color: var(--sand); }
-  .lockup .the { font-size: 10px; letter-spacing: .4em; display: block; color: var(--gold); }
+  .crest { width: 250px; display: block; margin: 0 auto; filter: drop-shadow(0 3px 6px rgba(120,90,50,.18)); }
+  .lockup { margin-top: 18px; font-family: 'Libre Caslon Text', serif; letter-spacing: .3em; font-size: 15px; line-height: 1.7; color: var(--oxford); }
+  .lockup .the { font-family: 'Montserrat', sans-serif; font-size: 10px; letter-spacing: .4em; display: block; color: var(--antique); }
 
   .eyebrow {
     margin-top: 64px;
     display: inline-flex; align-items: center; gap: 22px;
-    font-size: 13px; font-weight: 500; letter-spacing: .5em; color: var(--gold);
+    font-size: 13px; font-weight: 600; letter-spacing: .5em; color: var(--oxford);
   }
-  .eyebrow::before, .eyebrow::after { content: ""; width: 70px; height: 1px; background: var(--gold); opacity: .7; }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 70px; height: 1px; background: var(--antique); opacity: .7; }
 
   .title {
     margin-top: 26px;
     font-family: 'Libre Caslon Display', serif;
     font-weight: 400;
     font-size: 148px; line-height: .9; letter-spacing: -.01em;
-    color: var(--sand);
+    color: var(--antique);
   }
   .subtitle {
     margin-top: 18px;
     font-family: 'Libre Caslon Text', serif; font-style: italic;
-    font-size: 40px; color: var(--gold);
+    font-size: 40px; color: var(--oxford);
   }
   .brand {
     margin-top: 34px;
     font-size: 22px; font-weight: 300; letter-spacing: .62em; padding-left: .62em;
-    color: var(--sand);
+    color: var(--oxford);
   }
   .brand b { font-weight: 600; }
   .season {
     margin-top: 14px;
     font-family: 'Libre Caslon Text', serif;
-    font-size: 13px; letter-spacing: .45em; text-transform: uppercase; color: rgba(242,243,238,.6);
+    font-size: 13px; letter-spacing: .45em; text-transform: uppercase; color: var(--antique);
   }
 
   /* ---------- Product grid ---------- */
@@ -104,7 +109,7 @@
   .card {
     position: relative;
     background: var(--paper);
-    box-shadow: 0 18px 40px -22px rgba(41,51,73,.45), 0 0 0 1px rgba(168,140,90,.18);
+    box-shadow: 0 22px 44px -26px rgba(120,90,50,.45), 0 0 0 1px rgba(175,138,83,.2);
     display: flex; flex-direction: column;
     height: 352px;
   }
@@ -120,7 +125,7 @@
   .card .num {
     position: absolute; top: 14px; left: 18px;
     font-family: 'Libre Caslon Text', serif; font-style: italic;
-    font-size: 17px; color: var(--gold-deep);
+    font-size: 17px; color: var(--antique);
   }
   .card .info {
     padding: 14px 16px 20px; text-align: center;
@@ -140,13 +145,13 @@
 
   /* feature tile fills remaining grid space */
   .feature {
-    background: var(--chesnut); color: var(--sand);
+    background: var(--antique); color: #FFFDFA;
     display: flex; flex-direction: column; align-items: center; justify-content: center;
     text-align: center; padding: 30px; height: 352px;
-    box-shadow: 0 18px 40px -22px rgba(41,51,73,.45);
+    box-shadow: 0 22px 44px -26px rgba(120,90,50,.5);
     position: relative;
   }
-  .feature::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(242,243,238,.4); }
+  .feature::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,253,250,.5); }
   .feature .k { font-size: 11px; letter-spacing: .45em; font-weight: 500; }
   .feature .big { margin: 18px 0; font-family: 'Libre Caslon Display', serif; font-size: 50px; line-height: 1; }
   .feature .big i { font-family: 'Libre Caslon Text', serif; font-size: 30px; display: block; margin-bottom: 6px; }
@@ -155,15 +160,17 @@
   /* ---------- Footer ---------- */
   .footer {
     position: absolute; left: 0; right: 0; bottom: 0; height: 190px;
-    background: var(--oxford); color: var(--sand);
+    background: linear-gradient(180deg, var(--cream), var(--blush));
+    border-top: 1px solid rgba(175,138,83,.35);
+    color: var(--oxford);
     display: flex; align-items: center; justify-content: space-between;
     padding: 0 110px;
   }
-  .footer .left .k { font-size: 11px; letter-spacing: .45em; color: var(--gold); font-weight: 500; }
+  .footer .left .k { font-size: 11px; letter-spacing: .45em; color: var(--antique); font-weight: 600; }
   .footer .left .v { margin-top: 10px; font-family: 'Libre Caslon Text', serif; font-size: 30px; }
   .footer .right { text-align: center; }
   .footer .right img { width: 130px; display: block; margin: 0 auto 10px; }
-  .footer .right span { font-size: 11px; letter-spacing: .34em; color: var(--gold); }
+  .footer .right span { font-family: 'Libre Caslon Text', serif; font-size: 12px; letter-spacing: .3em; color: var(--oxford); }
 
   /* Fit the 1200px canvas to small screens when viewing */
   @media (max-width: 1240px) {
@@ -232,7 +239,7 @@
     const span = 3 - (products.length % 3);
     grid.insertAdjacentHTML('beforeend', `
       <aside class="feature" style="grid-column: span ${span}">
-        <div class="k">JUST LANDED</div>
+        <div class="k">IN STORE NOW</div>
         <div class="big"><i>Discover</i>${span > 1 ? 'the full collection' : 'The Edit'}</div>
         <div class="s">Ask our team in The Golf Hub</div>
       </aside>`);
