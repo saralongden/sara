@@ -3,7 +3,7 @@
 <head>
 <meta charset="utf-8">
 <meta name="viewport" content="width=device-width, initial-scale=1">
-<title>Golf Hub New Arrivals</title>
+<title>Women’s New Arrivals</title>
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
@@ -116,7 +116,7 @@
   .card .media {
     position: relative; flex: 1;
     display: flex; align-items: center; justify-content: center;
-    padding: 40px 14px 14px; overflow: hidden;
+    padding: 20px 14px; overflow: hidden;
   }
   .card .media img {
     max-width: 100%; max-height: 100%; object-fit: contain;
@@ -185,7 +185,7 @@
   <header class="masthead">
     <img class="logo" src="rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
 
-    <div class="eyebrow">THE GOLF HUB</div>
+    <div class="eyebrow">IN STORE NOW</div>
     <h1 class="title">New Arrivals</h1>
     <div class="subtitle">The Women’s Collection</div>
     <div class="brand"><b>TRAVIS</b>MATHEW</div>
@@ -196,8 +196,8 @@
 
   <footer class="footer">
     <div class="left">
-      <div class="k">AVAILABLE NOW</div>
-      <div class="v">In The Golf Hub</div>
+      <div class="k">THE WOMEN’S COLLECTION</div>
+      <div class="v">In Store Now</div>
     </div>
     <div class="right">
       <img src="rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
@@ -226,7 +226,6 @@
       : `<div class="placeholder">${hanger}Image ${n}</div>`;
     grid.insertAdjacentHTML('beforeend', `
       <article class="card">
-        <span class="num">N° ${n}</span>
         <div class="media">${media}</div>
       </article>`);
   });
@@ -235,9 +234,9 @@
     const span = 3 - (products.length % 3);
     grid.insertAdjacentHTML('beforeend', `
       <aside class="feature" style="grid-column: span ${span}">
-        <div class="k">IN STORE NOW</div>
+        <div class="k">TRAVISMATHEW</div>
         <div class="big"><i>Discover</i>${span > 1 ? 'the full collection' : 'The Edit'}</div>
-        <div class="s">Ask our team in The Golf Hub</div>
+        <div class="s">Ask our team in store</div>
       </aside>`);
   }
 
