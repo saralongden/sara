@@ -30,7 +30,7 @@
   .poster {
     position: relative;
     width: 1200px;
-    height: 1830px;
+    height: 1960px;
     background: var(--cream);
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
@@ -193,6 +193,7 @@
     { img: "products/canva/06-charcoal-quarter-zip.png" },
     { img: "products/canva/04-navy-skort.png" },
     { img: "products/canva/07-white-skort.png" },
+    { img: "products/canva/08-mint-polo.png" },
   ];
 
   const hanger = '<svg viewBox="0 0 48 48"><path d="M24 12a4 4 0 1 1 4 4c-2 0-4 1.5-4 4v1M24 21 6 34h36L24 21Z"/></svg>';
@@ -222,7 +223,7 @@
     const el = document.getElementById('poster');
     const s = Math.min(1, (window.innerWidth - 16) / 1200);
     el.style.transform = s < 1 ? `scale(${s})` : '';
-    document.body.style.height = s < 1 ? (1830 * s) + 'px' : '';
+    document.body.style.height = s < 1 ? (1960 * s) + 'px' : '';
   }
   if (!new URLSearchParams(location.search).has('export')) { window.addEventListener('resize', fit); fit(); }
 </script>
