@@ -1,7 +1,9 @@
 """Build an editable PPTX of the flyer for Canva import (text boxes, shapes, PNGs).
 
-Usage: python3 tools/build_pptx.py <boxes.json> <out.pptx>
-boxes.json is the element layout measured from new-arrivals.html.
+Usage: python3 tools/build_pptx.py <boxes.json> <out.pptx> [brand name]
+boxes.json is the element layout measured by tools/measure.js. With no product
+images in the layout, each slot gets tools/placeholder.png: drag a photo onto it
+in Canva to replace it.
 """
 import json
 import sys
@@ -94,26 +96,36 @@ text(0, t["y"], W, t["h"], [[("New Arrivals", "Libre Caslon Display", 148, ANTIQ
 s = d["subtitle"]
 text(0, s["y"], W, s["h"], [[("The Women’s Collection", "Libre Caslon Text", 40, OXFORD, False, True, 0)]])
 b = d["brand"]
-text(0, b["y"], W, b["h"], [[("TRAVIS", "Montserrat", 38, OXFORD, True, False, 0.5),
-                             ("MATHEW", "Montserrat", 38, OXFORD, False, False, 0.5)]])
+BRAND = (sys.argv[3] if len(sys.argv) > 3 else "TRAVIS MATHEW").upper()
+words = BRAND.split(" ")
+brand_runs = [(words[0], "Montserrat", 38, OXFORD, True, False, 0.5)]
+if len(words) > 1:
+    brand_runs.append((" " + " ".join(words[1:]), "Montserrat", 38, OXFORD, False, False, 0.5))
+text(0, b["y"], W, b["h"], [brand_runs])
 se = d["season"]
 text(0, se["y"], W, se["h"] + 4, [[("SPRING · SUMMER ’26", "Libre Caslon Text", 13, ANTIQUE, False, False, 0.45)]])
 
 # Product cards and cut-out images
 for c in d["cards"]:
     rect(c["x"], c["y"], c["w"], c["h"], fill=PAPER, line=CARD_LINE)
-for im in d["imgs"]:
-    slide.shapes.add_picture(im["src"], px(im["x"]), px(im["y"]), px(im["w"]), px(im["h"]))
+if d["imgs"]:
+    for im in d["imgs"]:
+        slide.shapes.add_picture(im["src"], px(im["x"]), px(im["y"]), px(im["w"]), px(im["h"]))
+else:  # template: one replaceable placeholder picture per slot
+    for i, mb in enumerate(d["media"], 1):
+        pic = slide.shapes.add_picture("tools/placeholder.png", px(mb["x"] + 14), px(mb["y"] + 20),
+                                       px(mb["w"] - 28), px(mb["h"] - 40))
+        pic.name = f"Product image {i}"
 
 # Gold collection tile
 ft = d["feature"]
 rect(ft["x"], ft["y"], ft["w"], ft["h"], fill=ANTIQUE)
 rect(ft["x"] + 12, ft["y"] + 12, ft["w"] - 24, ft["h"] - 24, line="D7C5A5")
 k, big = d["fk"], d["fbig"]
-text(ft["x"], k["y"], ft["w"], k["h"] + 4, [[("TRAVISMATHEW", "Montserrat", 17, PAPER, False, False, 0.45)]])
+text(ft["x"], k["y"], ft["w"], k["h"] + 4, [[(d.get("brandText", "TRAVISMATHEW"), "Montserrat", 17, PAPER, False, False, 0.45)]])
 text(ft["x"], big["y"], ft["w"], big["h"] + 10, [
     [("Discover", "Libre Caslon Text", 30, PAPER, False, True, 0)],
-    [("the full collection in store", "Libre Caslon Display", 50, PAPER, False, False, 0)],
+    [(d.get("bigText", "the full collection in store"), "Libre Caslon Display", 50, PAPER, False, False, 0)],
 ])
 
 prs.save(sys.argv[2])
