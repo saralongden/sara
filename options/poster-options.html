@@ -1,0 +1,214 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Poster Options</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Bodoni+Moda:ital,opsz,wght@0,6..96,400;0,6..96,500;1,6..96,400&family=Cormorant+Garamond:ital,wght@0,400;1,400&family=Jost:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Four editorial A4 poster options. Choose one with ?option=1..4 */
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #dcdcd8; }
+  body { display: flex; justify-content: center; padding: 24px 0; }
+
+  .page {
+    position: relative; width: 1240px; height: 1754px; overflow: hidden;
+    background: var(--bg); color: var(--ink);
+    font-family: 'Jost', sans-serif; transform-origin: top center;
+  }
+  .page > section { display: none; position: absolute; inset: 0; }
+  .serif { font-family: 'Bodoni Moda', serif; }
+  .italic { font-family: 'Cormorant Garamond', serif; font-style: italic; }
+  .caps { text-transform: uppercase; letter-spacing: .32em; }
+  .photo { background: url(lifestyle-photo.jpg) center top / cover no-repeat; }
+  .pills { position: absolute; left: 110px; right: 110px; display: flex; gap: 26px; }
+  .pill {
+    flex: 1; height: 76px; border-radius: 999px;
+    display: flex; align-items: center; justify-content: center;
+    font-size: 15px; font-weight: 400; text-transform: uppercase; letter-spacing: .3em;
+  }
+
+  /* ===== Option 1: Slate grey & pearl ===== */
+  .o1 { --bg: #F3F1EC; --ink: #3F4852; --slate: #4E5862; --pearl: #F3F1EC; --line: #B9B6AE; }
+  .o1 .s1 { display: block; }
+  .s1 .meta {
+    position: absolute; left: 90px; right: 90px; top: 90px;
+    display: flex; justify-content: space-between; align-items: center;
+    font-size: 13px; padding-bottom: 22px; border-bottom: 1px solid var(--line);
+  }
+  .s1 .meta img { height: 70px; }
+  .s1 h1 {
+    position: absolute; left: 82px; right: 82px; top: 230px;
+    font-weight: 400; font-size: 178px; line-height: .86; letter-spacing: -.035em;
+  }
+  .s1 h1 em { font-family: 'Cormorant Garamond', serif; font-weight: 400; letter-spacing: -.01em; }
+  .s1 .band { position: absolute; left: 0; right: 0; top: 660px; height: 640px; background: var(--slate); color: var(--pearl); }
+  .s1 .band .photo { position: absolute; right: 90px; top: -60px; width: 560px; height: 700px; }
+  .s1 .band .txt { position: absolute; left: 90px; top: 90px; width: 440px; }
+  .s1 .band .k { font-size: 13px; opacity: .8; }
+  .s1 .band .big { margin-top: 26px; font-size: 64px; line-height: 1.02; }
+  .s1 .band p { margin-top: 30px; font-size: 30px; line-height: 1.35; opacity: .9; }
+  .s1 .band .num { position: absolute; left: 90px; bottom: 70px; font-size: 13px; opacity: .7; }
+  .s1 .pills { top: 1430px; }
+  .s1 .pill { border: 1px solid var(--slate); color: var(--slate); }
+  .s1 .foot {
+    position: absolute; left: 90px; right: 90px; bottom: 90px; padding-top: 22px;
+    border-top: 1px solid var(--line); display: flex; justify-content: space-between; font-size: 12px;
+  }
+
+  /* ===== Option 2: Soft navy, champagne & blush ===== */
+  .o2 { --bg: #F6F0EA; --ink: #1F2A40; --navy: #1F2A40; --blush: #EAD5CB; --champ: #D9C3A0; }
+  .o2 .s2 { display: block; }
+  .s2 .logo { position: absolute; left: 50%; top: 80px; width: 230px; transform: translateX(-50%); }
+  .s2 .over { position: absolute; left: 0; right: 0; top: 300px; text-align: center; font-size: 14px; }
+  .s2 h1 {
+    position: absolute; left: 0; right: 0; top: 340px; text-align: center;
+    font-size: 210px; line-height: 1; font-weight: 400; color: var(--navy);
+  }
+  .s2 .sub {
+    position: absolute; left: 0; right: 0; top: 572px; text-align: center; font-size: 22px; letter-spacing: .6em;
+  }
+  .s2 .band { position: absolute; left: 0; right: 0; top: 680px; height: 620px; background: var(--navy); color: var(--bg); }
+  .s2 .band .photo { position: absolute; left: 0; top: 0; width: 560px; height: 100%; }
+  .s2 .band .txt { position: absolute; left: 650px; right: 90px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+  .s2 .band .rule { width: 70px; height: 2px; background: var(--blush); margin-bottom: 34px; }
+  .s2 .band .big { font-size: 76px; line-height: 1; }
+  .s2 .band .big i { color: var(--blush); }
+  .s2 .band p { margin-top: 30px; font-size: 30px; line-height: 1.35; color: var(--champ); }
+  .s2 .band .k { margin-top: 44px; font-size: 13px; opacity: .8; }
+  .s2 .pills { top: 1420px; }
+  .s2 .pill { background: var(--blush); color: var(--navy); }
+  .s2 .foot { position: absolute; left: 0; right: 0; bottom: 100px; text-align: center; font-size: 12px; color: var(--navy); opacity: .75; }
+
+  /* ===== Option 3: Sage & cream ===== */
+  .o3 { --bg: #F2EEE4; --ink: #3E4A3B; --sage: #8E9C86; --deep: #4D5B49; --cream: #F7F3EA; }
+  .o3 .s3 { display: block; }
+  .s3 .top { position: absolute; left: 90px; right: 90px; top: 90px; display: flex; justify-content: space-between; align-items: flex-start; }
+  .s3 .top img { height: 84px; }
+  .s3 .top .k { font-size: 13px; text-align: right; line-height: 2; }
+  .s3 .yr { position: absolute; right: 70px; top: 190px; font-size: 400px; line-height: .8; color: var(--sage); opacity: .35; letter-spacing: -.04em; }
+  .s3 h1 { position: absolute; left: 90px; top: 250px; font-weight: 400; font-size: 120px; line-height: .95; color: var(--deep); }
+  .s3 h1 em { font-family: 'Cormorant Garamond', serif; color: var(--sage); }
+  .s3 .band { position: absolute; left: 0; right: 0; top: 660px; height: 640px; background: var(--sage); color: var(--cream); }
+  .s3 .band .photo { position: absolute; left: 90px; top: 0; width: 560px; height: 100%; }
+  .s3 .band .txt { position: absolute; left: 720px; right: 90px; top: 0; bottom: 0; display: flex; flex-direction: column; justify-content: center; }
+  .s3 .band .big { font-size: 56px; line-height: 1.05; }
+  .s3 .band p { margin-top: 28px; font-size: 28px; line-height: 1.4; }
+  .s3 .band .k { margin-top: 40px; font-size: 13px; }
+  .s3 .pills { top: 1420px; }
+  .s3 .pill { border: 1px solid var(--deep); color: var(--deep); }
+  .s3 .pill:first-child { background: var(--deep); color: var(--cream); }
+  .s3 .foot { position: absolute; left: 90px; right: 90px; bottom: 90px; display: flex; justify-content: space-between; font-size: 12px; color: var(--deep); }
+
+  /* ===== Option 4: Pearl & slate with sage, photo breaking out of the band ===== */
+  .o4 { --bg: #F5F4F1; --ink: #3B434C; --slate: #6B747C; --sage: #A9B5A1; --pearl: #F5F4F1; }
+  .o4 .s4 { display: block; }
+  .s4 .logo { position: absolute; left: 90px; top: 90px; height: 76px; }
+  .s4 .k1 { position: absolute; right: 90px; top: 112px; font-size: 13px; }
+  .s4 h1 {
+    position: absolute; left: 0; right: 0; top: 260px; text-align: center;
+    font-size: 140px; line-height: .9; font-weight: 400; letter-spacing: -.02em;
+  }
+  .s4 h1 span { display: block; font-family: 'Jost', sans-serif; font-size: 22px; letter-spacing: .7em; margin-bottom: 30px; font-weight: 400; }
+  .s4 .band { position: absolute; left: 0; right: 0; top: 720px; height: 540px; background: linear-gradient(90deg, var(--slate) 0 50%, var(--sage) 50% 100%); color: var(--pearl); }
+  .s4 .band .photo {
+    position: absolute; left: 50%; top: -90px; width: 520px; height: 720px; transform: translateX(-50%);
+    box-shadow: 0 30px 60px -30px rgba(30,35,40,.5); outline: 1px solid var(--pearl); outline-offset: -18px;
+  }
+  .s4 .band .l, .s4 .band .r { position: absolute; top: 0; bottom: 0; width: 230px; display: flex; flex-direction: column; justify-content: center; }
+  .s4 .band .l { left: 70px; }
+  .s4 .band .r { right: 70px; text-align: right; color: #2F3A2E; }
+  .s4 .band .big { font-size: 46px; line-height: 1.1; }
+  .s4 .band .sm { margin-top: 20px; font-size: 13px; line-height: 2; }
+  .s4 .pills { top: 1400px; }
+  .s4 .pill { background: var(--pearl); border: 1px solid var(--ink); color: var(--ink); }
+  .s4 .foot { position: absolute; left: 0; right: 0; bottom: 100px; text-align: center; font-size: 26px; }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+
+  <!-- 1 · Slate & pearl -->
+  <section class="s1">
+    <div class="meta caps"><img src="../rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club"><span>The Women’s Edit</span><span>SS / 26</span></div>
+    <h1 class="serif">New<br><em>Arrivals</em></h1>
+    <div class="band">
+      <div class="txt">
+        <div class="k caps">In store now</div>
+        <div class="big serif">The Women’s Collection</div>
+        <p class="italic">Designed for every moment, on the course and beyond.</p>
+      </div>
+      <div class="num caps">Spring · Summer 2026</div>
+      <div class="photo"></div>
+    </div>
+    <div class="pills"><div class="pill">Dresses</div><div class="pill">Skirts</div><div class="pill">Polos</div><div class="pill">Layers</div></div>
+    <div class="foot caps"><span>The Royal Melbourne Golf Club</span><span>Pro Shop</span></div>
+  </section>
+
+  <!-- 2 · Soft navy -->
+  <section class="s2">
+    <img class="logo" src="../rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
+    <div class="over caps">The Women’s Collection</div>
+    <h1 class="italic">New Arrivals</h1>
+    <div class="sub caps">Spring · Summer ’26</div>
+    <div class="band">
+      <div class="photo"></div>
+      <div class="txt">
+        <div class="rule"></div>
+        <div class="big serif">Effortless <i>style,</i><br>every round.</div>
+        <p class="italic">Designed for every moment, on the course and beyond.</p>
+        <div class="k caps">In store now</div>
+      </div>
+    </div>
+    <div class="pills"><div class="pill">Dresses</div><div class="pill">Skirts</div><div class="pill">Polos</div><div class="pill">Layers</div></div>
+    <div class="foot caps">Discover the full collection in the Pro Shop</div>
+  </section>
+
+  <!-- 3 · Sage & cream -->
+  <section class="s3">
+    <div class="top"><img src="../rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club"><div class="k caps">The Women’s Edit<br>In store now</div></div>
+    <div class="yr serif">26</div>
+    <h1 class="serif">New<br><em>Arrivals</em></h1>
+    <div class="band">
+      <div class="photo"></div>
+      <div class="txt">
+        <div class="big serif">Fresh for the new season</div>
+        <p class="italic">Designed for every moment, on the course and beyond.</p>
+        <div class="k caps">Spring · Summer 2026</div>
+      </div>
+    </div>
+    <div class="pills"><div class="pill">Dresses</div><div class="pill">Skirts</div><div class="pill">Polos</div><div class="pill">Layers</div></div>
+    <div class="foot caps"><span>The Royal Melbourne Golf Club</span><span>Pro Shop</span></div>
+  </section>
+
+  <!-- 4 · Pearl, slate & sage -->
+  <section class="s4">
+    <img class="logo" src="../rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
+    <div class="k1 caps">Spring · Summer ’26</div>
+    <h1 class="serif"><span>The Women’s Collection</span>New Arrivals</h1>
+    <div class="band">
+      <div class="l"><div class="big serif">In store<br>now</div><div class="sm caps">The Women’s Edit</div></div>
+      <div class="photo"></div>
+      <div class="r"><div class="big italic">On the course<br>&amp; beyond</div><div class="sm caps">Pro Shop</div></div>
+    </div>
+    <div class="pills"><div class="pill">Dresses</div><div class="pill">Skirts</div><div class="pill">Polos</div><div class="pill">Layers</div></div>
+    <div class="foot italic">Discover the full collection in store</div>
+  </section>
+
+</div>
+<script>
+  const params = new URLSearchParams(location.search);
+  const n = Math.min(4, Math.max(1, +params.get('option') || 1));
+  document.getElementById('page').classList.add('o' + n);
+  function fit() {
+    const el = document.getElementById('page');
+    const s = Math.min(1, (window.innerWidth - 16) / 1240);
+    el.style.transform = s < 1 ? `scale(${s})` : '';
+    document.body.style.height = s < 1 ? (1754 * s + 24) + 'px' : '';
+  }
+  if (!params.has('export')) { window.addEventListener('resize', fit); fit(); }
+</script>
+</body>
+</html>
