@@ -20,7 +20,13 @@ session = new_session(os.environ.get("CUTOUT_MODEL", "birefnet-general"))
 
 
 def cut(path: Path) -> Path:
-    src = Image.open(path).convert("RGB")
+    src = Image.open(path)
+    if src.mode in ("RGBA", "LA", "P"):  # already-transparent sources: flatten onto white first
+        src = src.convert("RGBA")
+        white = Image.new("RGBA", src.size, (255, 255, 255, 255))
+        white.alpha_composite(src)
+        src = white
+    src = src.convert("RGB")
     alpha = np.asarray(remove(src, session=session, only_mask=True), dtype=np.float32) / 255
 
     # Tidy the matte: drop faint haze (e.g. soft floor shadows), keep anti-aliased edges
