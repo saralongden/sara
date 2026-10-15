@@ -1,0 +1,188 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Women's Collection</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Cormorant+Garamond:ital,wght@0,400;0,500;1,400;1,500&family=Pinyon+Script&family=Montserrat:wght@300;400;500&display=swap" rel="stylesheet">
+<style>
+  /* Soft, feminine take on the cream / navy layout:
+     navy band -> dusty rose, hard edges -> arches and curves */
+  :root {
+    --petal: #F8EFEC;      /* page background */
+    --blush: #F1DDD8;      /* soft wash */
+    --rose: #C99192;       /* feature band */
+    --rose-deep: #A86E72;
+    --mauve: #6E4A55;      /* text, replaces navy */
+    --gold: #C4A276;
+    --paper: #FFFBF9;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #e8dfdc; }
+  body { display: flex; justify-content: center; padding: 24px 0; }
+
+  .page {
+    position: relative;
+    width: 1240px; height: 1754px; /* A4 at 150 dpi */
+    background:
+      radial-gradient(ellipse 70% 40% at 50% 12%, #fff 0%, transparent 70%),
+      var(--petal);
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--mauve);
+    transform-origin: top center;
+  }
+  .frame {
+    position: absolute; inset: 30px;
+    border: 1px solid rgba(196,162,118,.55);
+    border-radius: 300px 300px 24px 24px; /* arched top */
+    pointer-events: none; z-index: 5;
+  }
+  .frame::after {
+    content: ""; position: absolute; inset: 8px;
+    border: 1px solid rgba(196,162,118,.25);
+    border-radius: 292px 292px 18px 18px;
+  }
+
+  /* ---------- Header (top cream area) ---------- */
+  header { position: relative; text-align: center; padding-top: 130px; }
+  .logo { width: 260px; display: block; margin: 0 auto; }
+  .club {
+    margin-top: 22px; font-size: 13px; letter-spacing: .45em; padding-left: .45em;
+    font-weight: 400; color: var(--mauve);
+  }
+  .sprig { display: block; margin: 40px auto 0; width: 220px; height: 26px; }
+  .script {
+    margin-top: 6px;
+    font-family: 'Pinyon Script', cursive;
+    font-size: 120px; line-height: 1; color: var(--rose-deep);
+  }
+  .tag {
+    margin-top: 6px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 34px; color: var(--mauve);
+  }
+
+  /* ---------- Feature band (was solid navy) ---------- */
+  .band {
+    position: absolute; left: 0; right: 0; top: 640px; height: 640px;
+    background: linear-gradient(180deg, var(--rose) 0%, #BF8487 100%);
+    color: var(--paper);
+  }
+  .band .wave { position: absolute; left: 0; width: 100%; height: 70px; }
+  .band .wave.top { top: -69px; }
+  .band .wave.bottom { bottom: -69px; transform: scaleY(-1); }
+  .band-inner {
+    position: relative; height: 100%;
+    display: grid; grid-template-columns: 430px 1fr; gap: 70px;
+    align-items: center; padding: 0 120px;
+  }
+  .arch {
+    height: 520px; border-radius: 215px 215px 14px 14px;
+    background: var(--paper);
+    border: 1px solid rgba(255,251,249,.8);
+    outline: 1px solid rgba(255,251,249,.5); outline-offset: 10px;
+    overflow: hidden;
+    display: flex; align-items: flex-end; justify-content: center;
+  }
+  .arch img { width: 92%; max-height: 92%; object-fit: contain; mix-blend-mode: multiply; }
+  .copy .eyebrow {
+    font-size: 14px; letter-spacing: .5em; font-weight: 500; opacity: .9;
+  }
+  .copy h1 {
+    margin-top: 20px;
+    font-family: 'Cormorant Garamond', serif; font-weight: 400;
+    font-size: 104px; line-height: .95;
+  }
+  .copy h1 i { font-weight: 400; }
+  .copy p {
+    margin-top: 26px; max-width: 440px;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 30px; line-height: 1.35; opacity: .95;
+  }
+  .copy .season {
+    margin-top: 30px; font-size: 13px; letter-spacing: .45em; opacity: .85;
+  }
+
+  /* ---------- Pills ---------- */
+  .pills {
+    position: absolute; left: 100px; right: 100px; top: 1420px;
+    display: flex; justify-content: space-between; gap: 24px;
+  }
+  .pill {
+    flex: 1; height: 84px; border-radius: 999px;
+    background: var(--paper);
+    border: 1px solid var(--gold);
+    box-shadow: 0 0 0 5px var(--petal), 0 0 0 6px rgba(196,162,118,.35),
+                0 18px 30px -18px rgba(168,110,114,.45);
+    display: flex; align-items: center; justify-content: center;
+    font-family: 'Cormorant Garamond', serif; font-style: italic;
+    font-size: 30px; color: var(--mauve);
+  }
+  .pill.on { background: var(--blush); }
+
+  footer {
+    position: absolute; left: 0; right: 0; bottom: 92px; text-align: center;
+    font-size: 12px; letter-spacing: .5em; padding-left: .5em; color: var(--rose-deep);
+  }
+
+  .dot { position: absolute; color: var(--gold); opacity: .7; }
+</style>
+</head>
+<body>
+<div class="page" id="page">
+  <div class="frame"></div>
+
+  <!-- tiny sparkles -->
+  <svg class="dot" style="left:190px;top:330px" width="22" height="22" viewBox="0 0 20 20"><path fill="currentColor" d="M10 0c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10C5.5 9.4 9.4 5.5 10 0Z"/></svg>
+  <svg class="dot" style="right:210px;top:250px" width="14" height="14" viewBox="0 0 20 20"><path fill="currentColor" d="M10 0c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10C5.5 9.4 9.4 5.5 10 0Z"/></svg>
+  <svg class="dot" style="right:160px;top:470px" width="20" height="20" viewBox="0 0 20 20"><path fill="currentColor" d="M10 0c.6 5.5 4.5 9.4 10 10-5.5.6-9.4 4.5-10 10-.6-5.5-4.5-9.4-10-10C5.5 9.4 9.4 5.5 10 0Z"/></svg>
+
+  <header>
+    <img class="logo" src="rmgc-logo-primary.png" alt="The Royal Melbourne Golf Club">
+    <svg class="sprig" viewBox="0 0 220 26" fill="none" stroke="#C4A276" stroke-width="1">
+      <path d="M0 13h82M138 13h82"/>
+      <path d="M110 4c-6 4-6 14 0 18 6-4 6-14 0-18Z" fill="#F1DDD8"/>
+      <path d="M96 13c4-6 10-7 14 0-4 7-10 6-14 0ZM124 13c-4-6-10-7-14 0 4 7 10 6 14 0Z"/>
+    </svg>
+    <div class="script">Women’s</div>
+    <div class="tag">New season, new favourites</div>
+  </header>
+
+  <section class="band">
+    <svg class="wave top" viewBox="0 0 1240 70" preserveAspectRatio="none"><path fill="#C99192" d="M0 70V40C200 0 420 0 620 30s420 30 620-10v50Z"/></svg>
+    <div class="band-inner">
+      <div class="arch"><img src="products/canva/01-blue-dress.png" alt=""></div>
+      <div class="copy">
+        <div class="eyebrow">IN STORE NOW</div>
+        <h1>New<br><i>Arrivals</i></h1>
+        <p>Designed for every moment, on the course and beyond.</p>
+        <div class="season">SPRING · SUMMER ’26</div>
+      </div>
+    </div>
+    <svg class="wave bottom" viewBox="0 0 1240 70" preserveAspectRatio="none"><path fill="#BF8487" d="M0 70V40C200 0 420 0 620 30s420 30 620-10v50Z"/></svg>
+  </section>
+
+  <nav class="pills">
+    <div class="pill on">Dresses</div>
+    <div class="pill">Skirts &amp; Skorts</div>
+    <div class="pill">Polos</div>
+    <div class="pill">Layers</div>
+  </nav>
+
+  <footer>DISCOVER THE FULL COLLECTION IN STORE</footer>
+</div>
+
+<script>
+  function fit() {
+    const el = document.getElementById('page');
+    const s = Math.min(1, (window.innerWidth - 16) / 1240);
+    el.style.transform = s < 1 ? `scale(${s})` : '';
+    document.body.style.height = s < 1 ? (1754 * s + 24) + 'px' : '';
+  }
+  if (!new URLSearchParams(location.search).has('export')) { window.addEventListener('resize', fit); fit(); }
+</script>
+</body>
+</html>
