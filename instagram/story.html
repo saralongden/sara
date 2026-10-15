@@ -1,0 +1,90 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<title>Women's On-Course Story</title>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Royal Melbourne Golf Club palette — matches post.html / new-arrivals.html */
+  :root { --oxford:#293349; --onyx:#3B4041; --paper:#FFFDFA; --blush:#EDE4DB; --cream:#F7F2EC; --antique:#AF8A53; }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  body { background: var(--cream); }
+
+  /* Instagram Story 9:16 — exported at 2x = 2160 x 3840.
+     Content kept clear of the top ~250px / bottom ~300px covered by the Story UI. */
+  .story {
+    position: relative; width: 1080px; height: 1920px; overflow: hidden;
+    background:
+      radial-gradient(ellipse 75% 35% at 50% 22%, rgba(255,255,255,.6), transparent 70%),
+      linear-gradient(180deg, var(--blush) 0%, var(--cream) 50%, var(--cream) 100%);
+    font-family: 'Montserrat', sans-serif; color: var(--oxford); text-align: center;
+  }
+  .story::after { content:""; position:absolute; inset:0; pointer-events:none;
+    background: repeating-linear-gradient(90deg, rgba(175,138,83,.03) 0 1px, transparent 1px 14px); }
+  .frame { position:absolute; inset:24px; border:1px solid rgba(175,138,83,.5); z-index:5; pointer-events:none; }
+  .frame::after { content:""; position:absolute; inset:6px; border:1px solid rgba(175,138,83,.22); }
+  .eyebrow { display:inline-flex; align-items:center; gap:20px;
+    font-size:15px; font-weight:600; letter-spacing:.5em; padding-left:.5em; }
+  .eyebrow::before, .eyebrow::after { content:""; width:64px; height:1px; background:var(--antique); opacity:.75; }
+  .club { font-size:15px; letter-spacing:.32em; padding-left:.32em; }
+
+  /* ---------- Page 1: cover ---------- */
+  .cover { position:absolute; left:0; right:0; top:50%; transform:translateY(-50%); }
+  .cover .crest { width:330px; filter: drop-shadow(0 3px 6px rgba(120,90,50,.18)); }
+  .cover .club { margin-top:22px; }
+  .cover .eyebrow { margin-top:90px; }
+  .cover h1 { margin-top:30px; font-family:'Libre Caslon Display', serif; font-weight:400;
+    font-size:200px; line-height:.88; color:var(--antique); }
+  .cover .sub { margin-top:34px; font-family:'Libre Caslon Text', serif; font-style:italic; font-size:50px; }
+  .cover .rule { width:120px; height:1px; background:var(--antique); margin:70px auto 0; }
+  .cover .next { margin-top:44px; font-size:15px; font-weight:500; letter-spacing:.42em; padding-left:.42em; color:var(--antique); }
+  .cover .next span { display:block; margin-top:14px; font-size:30px; letter-spacing:0; padding:0; }
+
+  /* ---------- Pages 2+: one outfit per page ---------- */
+  .look header { position:absolute; top:240px; left:0; right:0; }
+  .look .crest { width:180px; display:block; margin:0 auto; }
+  .look .eyebrow { margin-top:22px; }
+  .look .num { margin-top:6px; font-family:'Libre Caslon Display', serif; font-size:64px; color:var(--antique); line-height:1.1; }
+  .tile { position:absolute; left:150px; right:150px; top:500px; height:1000px; background:var(--paper); overflow:hidden;
+    box-shadow: 0 24px 48px -26px rgba(120,90,50,.5), 0 0 0 1px rgba(175,138,83,.25); }
+  .tile img { width:100%; height:100%; object-fit:contain; display:block; }  /* whole outfit, never cropped */
+  .look footer { position:absolute; left:0; right:0; bottom:300px; }
+  .cta { display:inline-block; background:var(--antique); color:var(--paper);
+    font-size:16px; font-weight:500; letter-spacing:.42em; padding:15px 32px 15px calc(32px + .42em); }
+  .tag { margin-top:12px; font-family:'Libre Caslon Text', serif; font-style:italic; font-size:22px; color:var(--onyx); }
+</style>
+</head>
+<body>
+<div class="story" id="story"><div class="frame"></div></div>
+<script>
+  // build_story.js injects window.PAGE = {type:'cover'} or {type:'look', src, n, bg}
+  const p = window.PAGE || { type: 'cover' };
+  const s = document.getElementById('story');
+  if (p.type === 'cover') {
+    s.insertAdjacentHTML('beforeend', `
+      <div class="cover">
+        <img class="crest" src="../rmgc-crest.png" alt="">
+        <div class="club">THE ROYAL MELBOURNE GOLF CLUB</div>
+        <div class="eyebrow">IN STORE NOW</div>
+        <h1>New<br>Arrivals</h1>
+        <div class="sub">Women’s On-Course Fashion</div>
+        <div class="rule"></div>
+        <div class="next">TAP FOR THE NEW LOOKS<span>→</span></div>
+      </div>`);
+  } else {
+    s.classList.add('look');
+    s.insertAdjacentHTML('beforeend', `
+      <header>
+        <img class="crest" src="../rmgc-crest.png" alt="">
+        <div class="eyebrow">NEW ARRIVALS</div>
+        <div class="num"><i>Look</i> ${String(p.n).padStart(2, '0')}</div>
+      </header>
+      <div class="tile" style="background:${p.bg || '#fff'}"><img src="${p.src}" alt=""></div>
+      <footer>
+        <div class="cta">IN STORE NOW</div>
+        <div class="tag">Women’s on-course fashion at the Pro Shop</div>
+      </footer>`);
+  }
+</script>
+</body>
+</html>
