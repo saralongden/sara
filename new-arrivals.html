@@ -116,7 +116,7 @@
   .card .media {
     position: relative; flex: 1;
     display: flex; align-items: center; justify-content: center;
-    padding: 22px 26px 6px; overflow: hidden;
+    padding: 40px 14px 14px; overflow: hidden;
   }
   .card .media img {
     max-width: 100%; max-height: 100%; object-fit: contain;
@@ -208,16 +208,16 @@
 </div>
 
 <script>
-  // ---- Edit products here: image path, name and colour/detail line ----
+  // ---- Product images (no names shown, by request) ----
   const products = [
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "products/canva/03-navy-pant.png", name: "Women's Pant", detail: "Navy" },
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "", name: "Product Name", detail: "Colourway" },
-    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "" },
+    { img: "" },
+    { img: "products/canva/03-navy-pant.png" },
+    { img: "products/canva/04-navy-skort.png" },
+    { img: "" },
+    { img: "" },
+    { img: "" },
+    { img: "" },
   ];
 
   const hanger = '<svg viewBox="0 0 48 48"><path d="M24 12a4 4 0 1 1 4 4c-2 0-4 1.5-4 4v1M24 21 6 34h36L24 21Z"/></svg>';
@@ -225,13 +225,12 @@
   products.forEach((p, i) => {
     const n = String(i + 1).padStart(2, '0');
     const media = p.img
-      ? `<img src="${p.img}" alt="${p.name}">`
+      ? `<img src="${p.img}" alt="">`
       : `<div class="placeholder">${hanger}Image ${n}</div>`;
     grid.insertAdjacentHTML('beforeend', `
       <article class="card">
         <span class="num">N° ${n}</span>
         <div class="media">${media}</div>
-        <div class="info"><div class="name">${p.name}</div><div class="detail">${p.detail}</div></div>
       </article>`);
   });
   // Fill the last row with the feature tile so the grid always closes neatly
