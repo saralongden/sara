@@ -1,0 +1,251 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Golf Hub New Arrivals</title>
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link href="https://fonts.googleapis.com/css2?family=Libre+Caslon+Display&family=Libre+Caslon+Text:ital,wght@0,400;1,400&family=Montserrat:wght@300;400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Royal Melbourne Golf Club palette (Brand Guidelines 2022) */
+  :root {
+    --oxford: #293349;
+    --gold: #D3BC8C;
+    --gold-deep: #A88C5A;
+    --chesnut: #C4482A;
+    --onyx: #3B4041;
+    --sand: #F2F3EE;
+    --paper: #FBFBF8;
+  }
+  * { box-sizing: border-box; margin: 0; padding: 0; }
+  html, body { background: #d9d9d4; }
+  body { display: flex; justify-content: center; padding: 24px 0; }
+
+  .poster {
+    position: relative;
+    width: 1200px;
+    height: 2100px;
+    background: var(--sand);
+    overflow: hidden;
+    font-family: 'Montserrat', sans-serif;
+    color: var(--oxford);
+    transform-origin: top center;
+  }
+
+  /* ---------- Masthead ---------- */
+  .masthead {
+    position: absolute; inset: 0 0 auto 0;
+    height: 940px;
+    background:
+      radial-gradient(ellipse 70% 60% at 50% 18%, rgba(211,188,140,.10), transparent 70%),
+      var(--oxford);
+    text-align: center;
+    color: var(--sand);
+    padding-top: 84px;
+  }
+  .masthead::after { /* fine pinstripe texture */
+    content: ""; position: absolute; inset: 0;
+    background: repeating-linear-gradient(90deg, rgba(211,188,140,.035) 0 1px, transparent 1px 14px);
+    pointer-events: none;
+  }
+  .frame {
+    position: absolute; inset: 28px;
+    border: 1px solid rgba(211,188,140,.55);
+    pointer-events: none; z-index: 5;
+  }
+  .frame::after {
+    content: ""; position: absolute; inset: 6px;
+    border: 1px solid rgba(211,188,140,.25);
+  }
+
+  .crest { width: 250px; display: block; margin: 0 auto; filter: drop-shadow(0 4px 10px rgba(0,0,0,.25)); }
+  .lockup { margin-top: 18px; font-weight: 400; letter-spacing: .32em; font-size: 15px; line-height: 1.7; color: var(--sand); }
+  .lockup .the { font-size: 10px; letter-spacing: .4em; display: block; color: var(--gold); }
+
+  .eyebrow {
+    margin-top: 64px;
+    display: inline-flex; align-items: center; gap: 22px;
+    font-size: 13px; font-weight: 500; letter-spacing: .5em; color: var(--gold);
+  }
+  .eyebrow::before, .eyebrow::after { content: ""; width: 70px; height: 1px; background: var(--gold); opacity: .7; }
+
+  .title {
+    margin-top: 26px;
+    font-family: 'Libre Caslon Display', serif;
+    font-weight: 400;
+    font-size: 148px; line-height: .9; letter-spacing: -.01em;
+    color: var(--sand);
+  }
+  .subtitle {
+    margin-top: 18px;
+    font-family: 'Libre Caslon Text', serif; font-style: italic;
+    font-size: 40px; color: var(--gold);
+  }
+  .brand {
+    margin-top: 34px;
+    font-size: 22px; font-weight: 300; letter-spacing: .62em; padding-left: .62em;
+    color: var(--sand);
+  }
+  .brand b { font-weight: 600; }
+  .season {
+    margin-top: 14px;
+    font-family: 'Libre Caslon Text', serif;
+    font-size: 13px; letter-spacing: .45em; text-transform: uppercase; color: rgba(242,243,238,.6);
+  }
+
+  /* ---------- Product grid ---------- */
+  .grid {
+    position: absolute; left: 90px; right: 90px; top: 760px;
+    display: grid; grid-template-columns: repeat(3, 1fr);
+    gap: 30px;
+    z-index: 2;
+  }
+  .card {
+    position: relative;
+    background: var(--paper);
+    box-shadow: 0 18px 40px -22px rgba(41,51,73,.45), 0 0 0 1px rgba(168,140,90,.18);
+    display: flex; flex-direction: column;
+    height: 352px;
+  }
+  .card .media {
+    position: relative; flex: 1;
+    display: flex; align-items: center; justify-content: center;
+    padding: 22px 26px 6px; overflow: hidden;
+  }
+  .card .media img {
+    max-width: 100%; max-height: 100%; object-fit: contain;
+    mix-blend-mode: multiply; /* melts white product backgrounds into the card */
+  }
+  .card .num {
+    position: absolute; top: 14px; left: 18px;
+    font-family: 'Libre Caslon Text', serif; font-style: italic;
+    font-size: 17px; color: var(--gold-deep);
+  }
+  .card .info {
+    padding: 14px 16px 20px; text-align: center;
+    border-top: 1px solid rgba(168,140,90,.25);
+    margin: 0 22px;
+  }
+  .card .name { font-size: 13px; font-weight: 600; letter-spacing: .2em; text-transform: uppercase; color: var(--oxford); }
+  .card .detail { margin-top: 6px; font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 14px; color: var(--onyx); opacity: .8; }
+
+  .placeholder {
+    width: 78%; height: 88%;
+    border: 1px dashed rgba(168,140,90,.55);
+    display: flex; flex-direction: column; align-items: center; justify-content: center; gap: 10px;
+    color: rgba(168,140,90,.9); font-size: 11px; letter-spacing: .3em; text-transform: uppercase;
+  }
+  .placeholder svg { width: 54px; height: 54px; stroke: currentColor; fill: none; stroke-width: 1.2; }
+
+  /* feature tile fills remaining grid space */
+  .feature {
+    background: var(--chesnut); color: var(--sand);
+    display: flex; flex-direction: column; align-items: center; justify-content: center;
+    text-align: center; padding: 30px; height: 352px;
+    box-shadow: 0 18px 40px -22px rgba(41,51,73,.45);
+    position: relative;
+  }
+  .feature::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(242,243,238,.4); }
+  .feature .k { font-size: 11px; letter-spacing: .45em; font-weight: 500; }
+  .feature .big { margin: 18px 0; font-family: 'Libre Caslon Display', serif; font-size: 50px; line-height: 1; }
+  .feature .big i { font-family: 'Libre Caslon Text', serif; font-size: 30px; display: block; margin-bottom: 6px; }
+  .feature .s { font-family: 'Libre Caslon Text', serif; font-style: italic; font-size: 15px; opacity: .9; }
+
+  /* ---------- Footer ---------- */
+  .footer {
+    position: absolute; left: 0; right: 0; bottom: 0; height: 190px;
+    background: var(--oxford); color: var(--sand);
+    display: flex; align-items: center; justify-content: space-between;
+    padding: 0 110px;
+  }
+  .footer .left .k { font-size: 11px; letter-spacing: .45em; color: var(--gold); font-weight: 500; }
+  .footer .left .v { margin-top: 10px; font-family: 'Libre Caslon Text', serif; font-size: 30px; }
+  .footer .right { text-align: center; }
+  .footer .right img { width: 130px; display: block; margin: 0 auto 10px; }
+  .footer .right span { font-size: 11px; letter-spacing: .34em; color: var(--gold); }
+
+  /* Fit the 1200px canvas to small screens when viewing */
+  @media (max-width: 1240px) {
+    body { padding: 0; }
+  }
+</style>
+</head>
+<body>
+<div class="poster" id="poster">
+  <div class="frame"></div>
+
+  <header class="masthead">
+    <img class="crest" src="rmgc-crest.png" alt="Royal Melbourne Golf Club crest">
+    <div class="lockup"><span class="the">- THE -</span>ROYAL MELBOURNE<br>GOLF CLUB</div>
+
+    <div class="eyebrow">THE GOLF HUB</div>
+    <h1 class="title">New Arrivals</h1>
+    <div class="subtitle">The Women’s Collection</div>
+    <div class="brand"><b>TRAVIS</b>MATHEW</div>
+    <div class="season">Spring · Summer ’26</div>
+  </header>
+
+  <main class="grid" id="grid"></main>
+
+  <footer class="footer">
+    <div class="left">
+      <div class="k">AVAILABLE NOW</div>
+      <div class="v">In The Golf Hub</div>
+    </div>
+    <div class="right">
+      <img src="rmgc-crest.png" alt="">
+      <span>ROYAL MELBOURNE</span>
+    </div>
+  </footer>
+</div>
+
+<script>
+  // ---- Edit products here: image path, name and colour/detail line ----
+  const products = [
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+    { img: "", name: "Product Name", detail: "Colourway" },
+  ];
+
+  const hanger = '<svg viewBox="0 0 48 48"><path d="M24 12a4 4 0 1 1 4 4c-2 0-4 1.5-4 4v1M24 21 6 34h36L24 21Z"/></svg>';
+  const grid = document.getElementById('grid');
+  products.forEach((p, i) => {
+    const n = String(i + 1).padStart(2, '0');
+    const media = p.img
+      ? `<img src="${p.img}" alt="${p.name}">`
+      : `<div class="placeholder">${hanger}Image ${n}</div>`;
+    grid.insertAdjacentHTML('beforeend', `
+      <article class="card">
+        <span class="num">N° ${n}</span>
+        <div class="media">${media}</div>
+        <div class="info"><div class="name">${p.name}</div><div class="detail">${p.detail}</div></div>
+      </article>`);
+  });
+  // Fill the last row with the feature tile so the grid always closes neatly
+  if (products.length % 3 !== 0) {
+    const span = 3 - (products.length % 3);
+    grid.insertAdjacentHTML('beforeend', `
+      <aside class="feature" style="grid-column: span ${span}">
+        <div class="k">JUST LANDED</div>
+        <div class="big"><i>Discover</i>${span > 1 ? 'the full collection' : 'The Edit'}</div>
+        <div class="s">Ask our team in The Golf Hub</div>
+      </aside>`);
+  }
+
+  // Scale the poster to the viewport when viewed in a browser
+  function fit() {
+    const el = document.getElementById('poster');
+    const s = Math.min(1, (window.innerWidth - 16) / 1200);
+    el.style.transform = s < 1 ? `scale(${s})` : '';
+    document.body.style.height = s < 1 ? (2100 * s) + 'px' : '';
+  }
+  if (!new URLSearchParams(location.search).has('export')) { window.addEventListener('resize', fit); fit(); }
+</script>
+</body>
+</html>
