@@ -30,7 +30,7 @@
   .poster {
     position: relative;
     width: 1200px;
-    height: 1960px;
+    height: 1830px;
     background: var(--cream);
     overflow: hidden;
     font-family: 'Montserrat', sans-serif;
@@ -151,6 +151,8 @@
     box-shadow: 0 22px 44px -26px rgba(120,90,50,.5);
     position: relative;
   }
+  .feature.band { height: 210px; }
+  .feature.band .big { margin: 12px 0 0; }
   .feature::before { content: ""; position: absolute; inset: 12px; border: 1px solid rgba(255,253,250,.5); }
   .feature .k { font-size: 17px; letter-spacing: .45em; font-weight: 500; }
   .feature .big { margin: 18px 0; font-family: 'Libre Caslon Display', serif; font-size: 50px; line-height: 1; }
@@ -189,7 +191,6 @@
     { img: "products/canva/02-blue-skirt.png" },
     { img: "products/canva/05-white-quarter-zip.png" },
     { img: "products/canva/06-charcoal-quarter-zip.png" },
-    { img: "products/canva/03-navy-pant.png" },
     { img: "products/canva/04-navy-skort.png" },
     { img: "products/canva/07-white-skort.png" },
   ];
@@ -207,10 +208,10 @@
       </article>`);
   });
   // Fill the last row with the feature tile so the grid always closes neatly
-  if (products.length % 3 !== 0) {
+  {
     const span = 3 - (products.length % 3);
     grid.insertAdjacentHTML('beforeend', `
-      <aside class="feature" style="grid-column: span ${span}">
+      <aside class="feature${span === 3 ? ' band' : ''}" style="grid-column: span ${span}">
         <div class="k">TRAVISMATHEW</div>
         <div class="big"><i>Discover</i>${span > 1 ? 'the full collection in store' : 'in store'}</div>
       </aside>`);
@@ -221,7 +222,7 @@
     const el = document.getElementById('poster');
     const s = Math.min(1, (window.innerWidth - 16) / 1200);
     el.style.transform = s < 1 ? `scale(${s})` : '';
-    document.body.style.height = s < 1 ? (1960 * s) + 'px' : '';
+    document.body.style.height = s < 1 ? (1830 * s) + 'px' : '';
   }
   if (!new URLSearchParams(location.search).has('export')) { window.addEventListener('resize', fit); fit(); }
 </script>
