@@ -5,9 +5,7 @@ const fs = require('fs'), path = require('path');
 const dir = __dirname, out = path.join(dir, 'story');
 fs.rmSync(out, { recursive: true, force: true }); fs.mkdirSync(out);
 const images = fs.readdirSync(path.join(dir, 'images')).filter(f => /\.(png|jpe?g|webp)$/i.test(f)).sort();
-const bgFile = path.join(dir, 'images', 'bg.json');
-const bg = fs.existsSync(bgFile) ? JSON.parse(fs.readFileSync(bgFile)) : {};
-const pages = [{ type: 'cover' }, ...images.map((f, i) => ({ type: 'look', src: 'images/' + f, n: i + 1, bg: bg[f] }))];
+const pages = [{ type: 'cover' }, ...images.map((f, i) => ({ type: 'look', src: 'images/' + f, n: i + 1 }))];
 (async () => {
   const browser = await chromium.launch();
   for (const [i, pg] of pages.entries()) {
