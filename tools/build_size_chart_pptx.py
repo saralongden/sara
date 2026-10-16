@@ -121,7 +121,7 @@ first, last = d["rows"][0][5], d["rows"][-1][5]
 rect(first["x"], first["y"], 0.75, last["y"] + last["h"] - first["y"], fill=LINE)
 
 # Footer
-text(d["note"], "Sizes are a guide only — fit varies by style.\nOur team is happy to help you find your perfect fit.",
+text(d["note"], "Sizes are a guide only — fit varies by style.\nOur team are happy to help you find your perfect fit.",
      SANS, 8, NAVY, spacing_em=0.06, pad=20)
 text(d["foott"], "WOMEN ON COURSE · GOLF FASHION", SANS, 7.5, GOLD, spacing_em=0.4, pad=20)
 
