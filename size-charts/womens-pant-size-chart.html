@@ -83,15 +83,15 @@
   <div class="foot"><div class="r"></div><div class="t">WOMEN ON COURSE · GOLF FASHION</div></div>
 </div>
 <script>
-  // AUST, UK, USA, EURO, Röhnisch, J.Lindeberg, Nivo (Nivo left blank to fill in)
+  // AUST, UK, USA, EURO, Röhnisch, J.Lindeberg, Nivo
   const rows = [
-    [4, 4, 0, 30, '', 26, ''],
-    [6, 6, 2, 32, 34, 27, ''],
-    [8, 8, 4, 34, 36, 28, ''],
-    [10, 10, 6, 36, 38, 29, ''],
-    [12, 12, 10, 38, 40, 30, ''],
-    [14, 14, 12, 40, 42, 31, ''],
-    [16, 16, 14, 42, 44, 32, ''],
+    [4, 4, 0, 30, '', 26, 'XS'],
+    [6, 6, 2, 32, 34, 27, 'S'],
+    [8, 8, 4, 34, 36, 28, 'M'],
+    [10, 10, 6, 36, 38, 29, 'M'],
+    [12, 12, 10, 38, 40, 30, 'L'],
+    [14, 14, 12, 40, 42, 31, 'XL'],
+    [16, 16, 14, 42, 44, 32, 'XL'],
   ];
   document.getElementById('rows').innerHTML = rows.map(r =>
     '<tr>' + r.slice(0,4).map(v => `<td>${v}</td>`).join('') + '<td></td>' +
