@@ -72,26 +72,25 @@ rect(m, m, W - 2 * m, H - 2 * m, line=LINE, line_w=0.75)
 
 # Logo lockup
 text(d["small"], "GOLF FASHION", SANS, 8.5, GOLD, spacing_em=0.42, align=PP_ALIGN.LEFT, pad=0)
-text(d["women"], "WOMEN", SERIF, 44, NAVY, spacing_em=0.02, pad=20)
+text(d["women"], "WOMEN", SERIF, 44, NAVY, spacing_em=0.02, align=PP_ALIGN.LEFT)
 row, on = d["onrow"], d["on"]
 cy = row["y"] + row["h"] / 2
-rect(row["x"], cy, on["x"] - row["x"] - 19, 0.75, fill=GOLD)
-rect(on["x"] + on["w"] + 19, cy, row["x"] + row["w"] - (on["x"] + on["w"] + 19), 0.75, fill=GOLD)
+gap = 18.9  # 5mm between rule and "on"
+rect(row["x"], cy, on["x"] - gap - row["x"], 0.75, fill=GOLD)
+rect(on["x"] + on["w"] + gap, cy, row["x"] + row["w"] - (on["x"] + on["w"] + gap), 0.75, fill=GOLD)
 text(on, "on", SERIF, 30, GOLD, italic=True, pad=10)
-text(d["course"], "COURSE", SERIF, 44, NAVY, spacing_em=0.02, pad=20)
+text(d["course"], "COURSE", SERIF, 44, NAVY, spacing_em=0.02, align=PP_ALIGN.RIGHT)
 text(d["since"], "SINCE 2004", SANS, 8.5, GOLD, spacing_em=0.42, align=PP_ALIGN.RIGHT)
 
 # Title
-r = d["rule"]; rect(r["x"], r["y"], r["w"], 0.75, fill=GOLD)
 text(d["h1"], "WOMEN’S PANT SIZING", SANS, 17, NAVY, spacing_em=0.38, pad=20)
 text(d["sub"], "SIZE CONVERSION GUIDE", SANS, 8.5, GOLD, spacing_em=0.4, pad=20)
 
-# Group labels with gold underline
+# Group labels
 for g in d["group"]:
     if not g["t"]:
         continue
     text({**g, "h": g["h"] - 6}, g["t"], SANS, 7.5, GOLD, spacing_em=0.38)
-    rect(g["x"], g["y"] + g["h"] - 0.75, g["w"], 0.75, fill=GOLD)
 
 # Header row (skip the spacer column)
 hd = d["head"]
@@ -124,7 +123,6 @@ rect(first["x"], first["y"], 0.75, last["y"] + last["h"] - first["y"], fill=LINE
 # Footer
 text(d["note"], "Sizes are a guide only — fit varies by style.\nOur team is happy to help you find your perfect fit.",
      SANS, 8, NAVY, spacing_em=0.06, pad=20)
-f = d["footr"]; rect(f["x"], f["y"], f["w"], 0.75, fill=GOLD)
 text(d["foott"], "WOMEN ON COURSE · GOLF FASHION", SANS, 7.5, GOLD, spacing_em=0.4, pad=20)
 
 prs.save(sys.argv[2])
