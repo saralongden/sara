@@ -173,14 +173,12 @@ details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-sp
   <section class="card">
     <div class="eyebrow">What you could win</div>
     <div class="prizes">
-      <div class="prize"><b>Luxury hamper</b>The star prize</div>
-      <div class="prize"><b>30% off</b>in the pro shop</div>
+      <div class="prize"><b>30% off</b>The star prize, in the pro shop</div>
       <div class="prize"><b>20% off</b>in the pro shop</div>
       <div class="prize"><b>10% off</b>in the pro shop</div>
       <div class="prize"><b>Cap</b>Women on Course</div>
       <div class="prize"><b>Sleeve of balls</b>For your next round</div>
       <div class="prize"><b>Ball marker</b>Mark it in style</div>
-      <div class="prize"><b>A new follow</b>News, events and golf fashion</div>
     </div>
     <p class="muted">Discounts are for a single pro-shop purchase on 20 or 21 October. While stocks last.</p>
   </section>
@@ -274,7 +272,6 @@ const FACEBOOK_URL = ""; // add the Facebook page link here once it's set up
 
 // Prize stock split across the two days. Tuesday's leftovers roll into Wednesday.
 const PRIZES = [
-  { id: "hamper", label: "Luxury hamper",   short: "HAMPER",  tue: 1, wed: 0 },
   { id: "p30",    label: "30% off",         short: "30% OFF", tue: 0, wed: 1 },
   { id: "p20",    label: "20% off",         short: "20% OFF", tue: 2, wed: 2 },
   { id: "p10",    label: "10% off",         short: "10% OFF", tue: 5, wed: 5 },
@@ -284,9 +281,9 @@ const PRIZES = [
 ];
 const MISS = { id: "miss", short: "BIRDIE NEXT TIME" };
 // Wheel order, with prizes spaced out between misses
-const SEGMENTS = ["p10", "miss", "balls", "p20", "miss", "hamper", "p10", "marker", "miss", "p30", "cap", "p20"];
+const SEGMENTS = ["p10", "miss", "balls", "p20", "miss", "p10", "marker", "miss", "p30", "cap", "p20"];
 const NAVY = "#1F2A44", PEARL = "#F9F6F1", GOLD = "#9E7A38", NAVY_SOFT = "#34405E";
-const SEG_COLORS = [NAVY, PEARL, GOLD, NAVY_SOFT, PEARL, GOLD, NAVY, NAVY_SOFT, PEARL, GOLD, NAVY, NAVY_SOFT];
+const SEG_COLORS = [NAVY, PEARL, GOLD, NAVY_SOFT, PEARL, NAVY, GOLD, PEARL, GOLD, NAVY, NAVY_SOFT];
 
 // ---- Storage (per device) ----
 const store = {
