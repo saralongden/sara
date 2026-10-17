@@ -130,7 +130,7 @@ details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-sp
   <section class="title-band">
     <div class="eyebrow">Member Guest Day</div>
     <h1>Spin the Wheel</h1>
-    <p>Follow us, unlock your pass, then spin the wheel at the Women on Course table to win a prize.</p>
+    <p>Follow us, unlock your pass, then spin the wheel at the Women on Course table to win up to 40% off women's apparel.</p>
     <div class="dates"><span class="chip">Tue 20 October</span><span class="chip">Wed 21 October</span></div>
   </section>
 
@@ -173,14 +173,12 @@ details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-sp
   <section class="card">
     <div class="eyebrow">What you could win</div>
     <div class="prizes">
-      <div class="prize"><b>30% off</b>The star prize, in the pro shop</div>
-      <div class="prize"><b>20% off</b>in the pro shop</div>
-      <div class="prize"><b>10% off</b>in the pro shop</div>
-      <div class="prize"><b>Cap</b>Women on Course</div>
-      <div class="prize"><b>Sleeve of balls</b>For your next round</div>
-      <div class="prize"><b>Ball marker</b>Mark it in style</div>
+      <div class="prize"><b>40% off</b>The star prize</div>
+      <div class="prize"><b>30% off</b>Women's apparel</div>
+      <div class="prize"><b>20% off</b>Women's apparel</div>
+      <div class="prize"><b>10% off</b>Women's apparel</div>
     </div>
-    <p class="muted">Discounts are for a single pro-shop purchase on 20 or 21 October. While stocks last.</p>
+    <p class="muted">Discounts are on women's apparel in the pro shop, for a single purchase on 20 or 21 October. While stocks last.</p>
   </section>
 
   <footer><a href="#host" id="to-host">Staff: open the prize wheel</a></footer>
@@ -272,18 +270,16 @@ const FACEBOOK_URL = ""; // add the Facebook page link here once it's set up
 
 // Prize stock split across the two days. Tuesday's leftovers roll into Wednesday.
 const PRIZES = [
-  { id: "p30",    label: "30% off",         short: "30% OFF", tue: 0, wed: 1 },
-  { id: "p20",    label: "20% off",         short: "20% OFF", tue: 2, wed: 2 },
-  { id: "p10",    label: "10% off",         short: "10% OFF", tue: 5, wed: 5 },
-  { id: "cap",    label: "Cap",             short: "CAP",     tue: 0, wed: 1 },
-  { id: "balls",  label: "Sleeve of balls", short: "BALLS",   tue: 1, wed: 0 },
-  { id: "marker", label: "Ball marker",     short: "MARKER",  tue: 1, wed: 0 },
+  { id: "p40", label: "40% off", short: "40% OFF", tue: 0, wed: 1 },
+  { id: "p30", label: "30% off", short: "30% OFF", tue: 1, wed: 0 },
+  { id: "p20", label: "20% off", short: "20% OFF", tue: 2, wed: 2 },
+  { id: "p10", label: "10% off", short: "10% OFF", tue: 5, wed: 5 },
 ];
 const MISS = { id: "miss", short: "BIRDIE NEXT TIME" };
 // Wheel order, with prizes spaced out between misses
-const SEGMENTS = ["p10", "miss", "balls", "p20", "miss", "p10", "marker", "miss", "p30", "cap", "p20"];
+const SEGMENTS = ["p10", "miss", "p20", "p10", "miss", "p30", "p10", "p20", "miss", "p40"];
 const NAVY = "#1F2A44", PEARL = "#F9F6F1", GOLD = "#9E7A38", NAVY_SOFT = "#34405E";
-const SEG_COLORS = [NAVY, PEARL, GOLD, NAVY_SOFT, PEARL, NAVY, GOLD, PEARL, GOLD, NAVY, NAVY_SOFT];
+const SEG_COLORS = [NAVY, PEARL, GOLD, NAVY_SOFT, PEARL, NAVY, GOLD, NAVY_SOFT, PEARL, GOLD];
 
 // ---- Storage (per device) ----
 const store = {
@@ -395,7 +391,7 @@ function finish(outcome) {
   document.getElementById("m-eyebrow").textContent = prize ? "You've won" : "So close";
   document.getElementById("m-title").textContent = prize ? prize.label : "Birdie next time";
   document.getElementById("m-text").textContent = prize
-    ? (prize.id.startsWith("p") ? "Show this code in the pro shop to use your discount on 20 or 21 October." : "Collect your prize from the Women on Course table.")
+    ? "Off women's apparel in the pro shop. Show this code at the till on 20 or 21 October."
     : "Thank you for following Women on Course. Have a wonderful round!";
   const cl = document.getElementById("m-claim");
   cl.textContent = claim; cl.hidden = !claim;
