@@ -1,113 +1,130 @@
-<title>Spin the Golf Ball</title>
+<title>Spin the Wheel</title>
 <meta name="claude:viewport-fit-sides" content="cover">
 <link rel="preconnect" href="https://fonts.googleapis.com">
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Young+Serif&family=Figtree:wght@400;600;800&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Playfair+Display:wght@400;700;900&family=Pinyon+Script&family=Montserrat:wght@400;500;600;700&display=swap">
 <style>
-/* Layout: one narrow phone column. Guests see "Follow to Play"; staff open #host for the wheel and prize stock.
-   BRAND COLOURS: swap these for the official Women on Course colours. */
+/* Layout: one narrow phone column on Pearl. Guests see "Follow to Play"; staff open #host for the wheel and prize stock.
+   Colours: Women on Course brand suite, colourway Pearl. */
 :root {
-  --berry: #B0185E;      /* primary brand colour */
-  --berry-deep: #7E0F43;
-  --ink: #33102F;        /* text */
-  --blush: #FCEEF3;      /* page background */
+  --pearl: #F9F6F1;
+  --navy: #1F2A44;
+  --navy-soft: #34405E;
+  --gold: #9E7A38;
   --paper: #FFFFFF;
-  --fairway: #1F6B4A;    /* golf green accent */
-  --gold: #E3A82B;       /* prizes */
-  --muted: #7A5A72;
-  --line: #EBCFDB;
-  --display: "Young Serif", Georgia, "Times New Roman", serif;
-  --body: "Figtree", system-ui, -apple-system, "Segoe UI", sans-serif;
+  --muted: #5F667A;
+  --line: #E6DCCB;
+  --display: "Playfair Display", "Didot", "Bodoni 72", Georgia, serif;
+  --script: "Pinyon Script", "Snell Roundhand", cursive;
+  --body: "Montserrat", system-ui, -apple-system, "Segoe UI", sans-serif;
   color-scheme: light;
 }
 * { box-sizing: border-box; }
-body { background: var(--blush); color: var(--ink); font-family: var(--body); font-size: 16px; line-height: 1.5; }
-.wrap { max-width: 520px; margin: 0 auto; padding-block: 20px 40px;
+body { background: var(--pearl); color: var(--navy); font-family: var(--body); font-size: 15px; line-height: 1.55; }
+.wrap { max-width: 520px; margin: 0 auto; padding-block: 24px 40px;
   padding-left: max(16px, env(safe-area-inset-left, 0px)); padding-right: max(16px, env(safe-area-inset-right, 0px));
   display: flex; flex-direction: column; gap: 18px; }
 .wrap.wide { max-width: 980px; }
-h1, h2, h3 { font-family: var(--display); font-weight: 400; text-wrap: balance; margin: 0; line-height: 1.15; }
-h1 { font-size: 2.2rem; }
-h2 { font-size: 1.45rem; }
+h1, h2, h3 { font-family: var(--display); font-weight: 700; text-wrap: balance; margin: 0; line-height: 1.15; }
+h2 { font-size: 1.4rem; }
 p { margin: 0; }
-.eyebrow { text-transform: uppercase; letter-spacing: .12em; font-size: .75rem; font-weight: 800; color: var(--berry); }
-.muted { color: var(--muted); font-size: .9rem; }
+.eyebrow { text-transform: uppercase; letter-spacing: .28em; font-size: .7rem; font-weight: 600; color: var(--gold); }
+.muted { color: var(--muted); font-size: .88rem; }
+.rule { width: 64px; height: 1px; background: var(--gold); margin: 0 auto; }
 
-.hero { background: var(--berry); color: var(--paper); border-radius: 22px; padding: 22px 20px 20px; position: relative; overflow: hidden; }
-.hero .eyebrow { color: var(--blush); opacity: .85; }
-.hero h1 { margin-top: 6px; }
-.hero p { margin-top: 8px; opacity: .92; }
-.hero .dates { display: flex; flex-wrap: wrap; gap: 8px; margin-top: 14px; }
-.chip { background: rgba(255,255,255,.16); border: 1px solid rgba(255,255,255,.35); border-radius: 999px; padding: 4px 12px; font-size: .85rem; font-weight: 600; }
-.hero .dimples { position: absolute; right: -40px; top: -40px; width: 150px; height: 150px; border-radius: 50%;
-  background: radial-gradient(circle at 30% 30%, #fff 0 60%, #f3dbe5 100%); opacity: .18; }
+/* Wordmark, rebuilt from the brand suite */
+.mark { display: grid; justify-items: center; gap: 0; padding-block: 8px 4px; }
+.mark .top, .mark .since { font-size: .62rem; letter-spacing: .32em; color: var(--gold); font-weight: 500; text-transform: uppercase; }
+.mark .top { justify-self: start; margin-left: 12%; }
+.mark .since { justify-self: end; margin-right: 10%; }
+.mark .word { font-family: var(--display); font-weight: 900; font-size: clamp(2.6rem, 13vw, 3.6rem); line-height: .95; letter-spacing: .02em; }
+.mark .word.c { margin-left: 16%; }
+.mark .on { display: flex; align-items: center; gap: 12px; width: 82%; }
+.mark .on::before, .mark .on::after { content: ""; flex: 1; height: 1px; background: var(--gold); }
+.mark .on span { font-family: var(--script); color: var(--gold); font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1; }
 
-.card { background: var(--paper); border: 1px solid var(--line); border-radius: 18px; padding: 18px; display: flex; flex-direction: column; gap: 12px; }
+.title-band { background: var(--navy); color: var(--pearl); border-radius: 4px; padding: 22px 20px; text-align: center; display: grid; gap: 10px; }
+.title-band h1 { font-size: 2.1rem; font-weight: 700; letter-spacing: .01em; }
+.title-band p { opacity: .9; font-size: .92rem; }
+.dates { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
+.chip { border: 1px solid var(--gold); color: var(--pearl); border-radius: 2px; padding: 4px 12px; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
+.chip select { font: 600 .8rem var(--body); background: var(--navy); color: var(--pearl); border: 0; }
+
+.card { background: var(--paper); border: 1px solid var(--line); border-radius: 4px; padding: 20px 18px; display: flex; flex-direction: column; gap: 12px; }
 .step { display: flex; gap: 14px; align-items: flex-start; }
-.step-num { flex: none; width: 34px; height: 34px; border-radius: 50%; background: var(--blush); color: var(--berry); font-weight: 800; display: grid; place-items: center; }
-.step.done .step-num { background: var(--fairway); color: var(--paper); }
+.step-num { flex: none; width: 34px; height: 34px; border-radius: 50%; border: 1px solid var(--gold); color: var(--gold); font-family: var(--display); font-weight: 700; display: grid; place-items: center; }
+.step.done .step-num { background: var(--navy); border-color: var(--navy); color: var(--pearl); }
 .step > div { min-width: 0; display: flex; flex-direction: column; gap: 8px; flex: 1; }
 
-.btn { appearance: none; border: 0; border-radius: 14px; padding: 14px 18px; font: 800 1rem var(--body); cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
-.btn:focus-visible { outline: 3px solid var(--gold); outline-offset: 2px; }
-.btn-ig { background: var(--berry); color: var(--paper); }
-.btn-ig:hover { background: var(--berry-deep); }
-.btn-ghost { background: var(--blush); color: var(--ink); border: 1px solid var(--line); }
-.btn-go { background: var(--fairway); color: var(--paper); font-size: 1.15rem; padding: 16px 22px; }
-.btn[disabled] { opacity: .45; cursor: not-allowed; }
-.btn-sm { padding: 8px 12px; font-size: .9rem; border-radius: 10px; }
+.btn { appearance: none; border: 0; border-radius: 2px; padding: 14px 18px; font: 600 .82rem var(--body); letter-spacing: .18em; text-transform: uppercase; cursor: pointer; text-decoration: none; display: inline-flex; align-items: center; justify-content: center; gap: 10px; }
+.btn:focus-visible { outline: 2px solid var(--gold); outline-offset: 3px; }
+.btn-ig { background: var(--navy); color: var(--pearl); }
+.btn-ig:hover { background: var(--navy-soft); }
+.btn-ghost { background: transparent; color: var(--navy); border: 1px solid var(--navy); }
+.btn-go { background: var(--gold); color: var(--paper); font-size: .95rem; padding: 16px 22px; }
+.btn-go:hover:not([disabled]) { background: #8A6A2F; }
+.btn[disabled] { opacity: .4; cursor: not-allowed; }
+.btn-sm { padding: 8px 12px; font-size: .7rem; }
+.handle { font-weight: 600; }
 
-.pass { border: 2px dashed var(--berry); background: var(--paper); border-radius: 18px; padding: 18px; text-align: center; display: flex; flex-direction: column; gap: 6px; }
-.pass .code { font-family: var(--display); font-size: 2.6rem; color: var(--berry); letter-spacing: .04em; font-variant-numeric: tabular-nums; }
-.locked { filter: grayscale(1); opacity: .5; }
-.prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 8px; }
-.prize { background: var(--blush); border-radius: 12px; padding: 10px 12px; font-weight: 600; font-size: .92rem; }
-.prize b { color: var(--berry); }
+.pass { border: 1px solid var(--gold); outline: 1px solid var(--gold); outline-offset: 4px; background: var(--pearl); padding: 20px 18px; text-align: center; display: flex; flex-direction: column; gap: 6px; margin: 6px; }
+.pass .code { font-family: var(--display); font-weight: 700; font-size: 2.4rem; color: var(--navy); letter-spacing: .06em; font-variant-numeric: tabular-nums; }
+.locked { opacity: .45; }
+.prizes { display: grid; grid-template-columns: 1fr 1fr; gap: 1px; background: var(--line); border: 1px solid var(--line); }
+.prize { background: var(--paper); padding: 12px; font-size: .86rem; }
+.prize b { font-family: var(--display); font-size: 1.05rem; display: block; color: var(--navy); }
 footer { text-align: center; }
-footer a { color: var(--muted); font-size: .8rem; }
+footer a { color: var(--muted); font-size: .78rem; }
 
 /* Host */
 .host-grid { display: grid; grid-template-columns: minmax(0, 1.1fr) minmax(0, 1fr); gap: 18px; align-items: start; }
 @media (max-width: 760px) { .host-grid { grid-template-columns: minmax(0, 1fr); } }
-.wheel-box { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1; margin: 0 auto; }
-#wheel { width: 100%; height: 100%; display: block; border-radius: 50%; box-shadow: 0 10px 30px rgba(126,15,67,.25); transition: transform 5.2s cubic-bezier(.12,.75,.12,1); }
-.pointer { position: absolute; left: 50%; top: -6px; transform: translateX(-50%); width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 30px solid var(--ink); filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
-.hub { position: absolute; inset: 0; margin: auto; width: 22%; height: 22%; border-radius: 50%; background: radial-gradient(circle at 35% 35%, #fff, #e9e3e7); box-shadow: inset 0 0 0 3px var(--berry); display: grid; place-items: center; font: 800 .7rem var(--body); color: var(--berry); text-align: center; letter-spacing: .05em; }
+.wheel-box { position: relative; width: 100%; max-width: 440px; aspect-ratio: 1; margin: 8px auto 0; }
+#wheel { width: 100%; height: 100%; display: block; border-radius: 50%; box-shadow: 0 10px 30px rgba(31,42,68,.22); transition: transform 5.2s cubic-bezier(.12,.75,.12,1); }
+.pointer { position: absolute; left: 50%; top: -8px; transform: translateX(-50%); width: 0; height: 0; border-left: 16px solid transparent; border-right: 16px solid transparent; border-top: 30px solid var(--gold); filter: drop-shadow(0 2px 2px rgba(0,0,0,.25)); }
+.hub { position: absolute; inset: 0; margin: auto; width: 22%; height: 22%; border-radius: 50%; background: var(--pearl); box-shadow: inset 0 0 0 3px var(--gold), 0 2px 8px rgba(0,0,0,.2); display: grid; place-items: center; font-family: var(--script); color: var(--gold); font-size: clamp(1.8rem, 6vw, 2.6rem); }
 @media (prefers-reduced-motion: reduce) { #wheel { transition-duration: .8s; } }
-.check { display: flex; gap: 10px; align-items: center; font-weight: 600; background: var(--blush); padding: 12px 14px; border-radius: 12px; cursor: pointer; }
-.check input { width: 22px; height: 22px; accent-color: var(--fairway); }
+.check { display: flex; gap: 10px; align-items: center; font-weight: 500; background: var(--pearl); border: 1px solid var(--line); padding: 12px 14px; cursor: pointer; }
+.check input { width: 22px; height: 22px; accent-color: var(--navy); flex: none; }
 .row { display: flex; flex-wrap: wrap; gap: 10px; align-items: center; }
 .row > * { min-width: 0; }
-select, input[type=number], input[type=text], input[type=url] { font: 600 1rem var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 10px; background: var(--paper); color: var(--ink); }
+input[type=number], input[type=url] { font: 500 1rem var(--body); padding: 8px 10px; border: 1px solid var(--line); border-radius: 2px; background: var(--paper); color: var(--navy); }
 input[type=number] { width: 80px; }
 .table-scroll { overflow-x: auto; }
-table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .92rem; }
+table { width: 100%; border-collapse: collapse; font-variant-numeric: tabular-nums; font-size: .88rem; }
 th, td { text-align: left; padding: 8px 6px; border-bottom: 1px solid var(--line); white-space: nowrap; }
-th { font-size: .72rem; text-transform: uppercase; letter-spacing: .08em; color: var(--muted); }
+th { font-size: .66rem; text-transform: uppercase; letter-spacing: .14em; color: var(--gold); font-weight: 600; }
 td.num, th.num { text-align: right; }
-.left-pill { display: inline-block; min-width: 2.2em; text-align: center; border-radius: 999px; padding: 1px 8px; font-weight: 800; background: var(--blush); color: var(--berry); }
-.left-pill.zero { background: #eee; color: #999; }
-.stat { display: flex; gap: 18px; flex-wrap: wrap; }
+.left-pill { display: inline-block; min-width: 2.2em; text-align: center; border-radius: 2px; padding: 1px 8px; font-weight: 700; background: var(--navy); color: var(--pearl); }
+.left-pill.zero { background: var(--line); color: var(--muted); }
+.stat { display: flex; gap: 20px; flex-wrap: wrap; }
 .stat div { display: flex; flex-direction: column; }
-.stat b { font-family: var(--display); font-size: 1.6rem; color: var(--berry); font-weight: 400; font-variant-numeric: tabular-nums; }
-.log { max-height: 220px; overflow-y: auto; font-size: .88rem; display: flex; flex-direction: column; gap: 4px; }
+.stat b { font-family: var(--display); font-size: 1.7rem; color: var(--navy); font-variant-numeric: tabular-nums; }
+.stat span { font-size: .7rem; letter-spacing: .12em; text-transform: uppercase; color: var(--muted); }
+.log { max-height: 220px; overflow-y: auto; font-size: .84rem; display: flex; flex-direction: column; gap: 4px; margin-top: 8px; }
 .log div { display: flex; justify-content: space-between; gap: 10px; border-bottom: 1px dotted var(--line); padding-bottom: 3px; }
 
-.modal { position: fixed; inset: 0; background: rgba(51,16,47,.55); display: grid; place-items: center; padding: 16px; z-index: 20; }
-.modal-card { background: var(--paper); border-radius: 24px; padding: 28px 22px; max-width: 420px; width: 100%; text-align: center; display: flex; flex-direction: column; gap: 12px; border-top: 8px solid var(--gold); }
-.modal-card.lose { border-top-color: var(--fairway); }
-.modal-card .big { font-family: var(--display); font-size: 2.2rem; color: var(--berry); line-height: 1.1; }
-.modal-card .claim { font-weight: 800; letter-spacing: .08em; background: var(--blush); border-radius: 10px; padding: 8px; font-variant-numeric: tabular-nums; }
-#qr-out { display: grid; place-items: center; }
-#qr-out img, #qr-out canvas { max-width: 100%; height: auto; image-rendering: pixelated; }
-details summary { cursor: pointer; font-weight: 800; }
+.modal { position: fixed; inset: 0; background: rgba(31,42,68,.6); display: grid; place-items: center; padding: 16px; z-index: 20; }
+.modal-card { background: var(--pearl); padding: 30px 22px; max-width: 420px; width: 100%; text-align: center; display: flex; flex-direction: column; gap: 12px; border: 1px solid var(--gold); outline: 1px solid var(--gold); outline-offset: -8px; }
+.modal-card .big { font-family: var(--display); font-weight: 900; font-size: 2.3rem; color: var(--navy); line-height: 1.1; }
+.modal-card .claim { font-weight: 700; letter-spacing: .14em; background: var(--navy); color: var(--pearl); padding: 10px; font-variant-numeric: tabular-nums; }
+#qr-out { display: grid; place-items: center; margin-top: 8px; }
+#qr-out img { max-width: 100%; height: auto; image-rendering: pixelated; }
+details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-spacing: .14em; text-transform: uppercase; }
 </style>
 
 <!-- ============ GUEST VIEW ============ -->
 <main id="guest" class="wrap">
-  <section class="hero">
-    <div class="dimples" aria-hidden="true"></div>
-    <div class="eyebrow">Women on Course · Member &amp; Guest Day</div>
-    <h1>Spin the Golf Ball</h1>
+  <div class="mark" aria-label="Women on Course, golf fashion since 2004">
+    <span class="top">Golf Fashion</span>
+    <span class="word">WOMEN</span>
+    <span class="on"><span>on</span></span>
+    <span class="word c">COURSE</span>
+    <span class="since">Since 2004</span>
+  </div>
+
+  <section class="title-band">
+    <div class="eyebrow">Member Guest Day</div>
+    <h1>Spin the Wheel</h1>
     <p>Follow us, unlock your pass, then spin the wheel at the Women on Course table to win a prize.</p>
     <div class="dates"><span class="chip">Tue 20 October</span><span class="chip">Wed 21 October</span></div>
   </section>
@@ -116,16 +133,16 @@ details summary { cursor: pointer; font-weight: 800; }
     <div class="step" id="step1">
       <div class="step-num">1</div>
       <div>
-        <h2>Follow @womenoncourse</h2>
+        <h2>Follow <span class="handle" id="ig-handle">@womenoncoursegolf</span></h2>
         <p class="muted">Tap the button, follow us on Instagram, then come back to this page.</p>
-        <a class="btn btn-ig" id="ig-btn" href="https://www.instagram.com/womenoncourse/" target="_blank" rel="noopener">Follow on Instagram</a>
+        <a class="btn btn-ig" id="ig-btn" href="https://www.instagram.com/womenoncoursegolf/" target="_blank" rel="noopener">Follow on Instagram</a>
         <a class="btn btn-ghost" id="fb-btn" href="#" target="_blank" rel="noopener" hidden>Like us on Facebook</a>
         <p class="muted" id="fb-soon">Our Facebook page is coming soon.</p>
       </div>
     </div>
   </section>
 
-  <section class="card" id="step2-card">
+  <section class="card">
     <div class="step" id="step2">
       <div class="step-num">2</div>
       <div>
@@ -134,23 +151,23 @@ details summary { cursor: pointer; font-weight: 800; }
       </div>
     </div>
     <div class="pass locked" id="pass">
-      <div class="eyebrow">Golf Ball Pass</div>
+      <div class="eyebrow">Spin Pass</div>
       <div class="code" id="pass-code">WOC-····</div>
       <p class="muted">Show this screen and your Instagram follow at the Women on Course table to spin. One spin per person per day.</p>
     </div>
   </section>
 
   <section class="card">
-    <h2>What you could win</h2>
+    <div class="eyebrow">What you could win</div>
     <div class="prizes">
-      <div class="prize"><b>Luxury hamper</b></div>
-      <div class="prize"><b>30% off</b> in the pro shop</div>
-      <div class="prize"><b>20% off</b> in the pro shop</div>
-      <div class="prize"><b>10% off</b> in the pro shop</div>
-      <div class="prize">Women on Course <b>cap</b></div>
-      <div class="prize"><b>Sleeve of balls</b></div>
-      <div class="prize"><b>Ball marker</b></div>
-      <div class="prize">Plus bragging rights</div>
+      <div class="prize"><b>Luxury hamper</b>The star prize</div>
+      <div class="prize"><b>30% off</b>in the pro shop</div>
+      <div class="prize"><b>20% off</b>in the pro shop</div>
+      <div class="prize"><b>10% off</b>in the pro shop</div>
+      <div class="prize"><b>Cap</b>Women on Course</div>
+      <div class="prize"><b>Sleeve of balls</b>For your next round</div>
+      <div class="prize"><b>Ball marker</b>Mark it in style</div>
+      <div class="prize"><b>A new follow</b>News, events and golf fashion</div>
     </div>
     <p class="muted">Discounts are for a single pro-shop purchase on 20 or 21 October. While stocks last.</p>
   </section>
@@ -160,12 +177,11 @@ details summary { cursor: pointer; font-weight: 800; }
 
 <!-- ============ HOST VIEW ============ -->
 <main id="host" class="wrap wide" hidden>
-  <section class="hero">
-    <div class="dimples" aria-hidden="true"></div>
-    <div class="eyebrow">Women on Course · Staff wheel</div>
-    <h1>Spin the Golf Ball</h1>
+  <section class="title-band">
+    <div class="eyebrow">Member Guest Day · Staff wheel</div>
+    <h1>Spin the Wheel</h1>
     <div class="dates">
-      <label class="chip">Day:
+      <label class="chip">Day
         <select id="day" aria-label="Event day">
           <option value="tue">Tuesday 20 October</option>
           <option value="wed">Wednesday 21 October</option>
@@ -179,7 +195,7 @@ details summary { cursor: pointer; font-weight: 800; }
       <div class="wheel-box">
         <canvas id="wheel" width="880" height="880" aria-label="Prize wheel"></canvas>
         <div class="pointer" aria-hidden="true"></div>
-        <div class="hub" aria-hidden="true">WOMEN<br>ON<br>COURSE</div>
+        <div class="hub" aria-hidden="true">on</div>
       </div>
       <label class="check"><input type="checkbox" id="followed"> I've seen her pass and her Instagram follow</label>
       <button class="btn btn-go" id="spin" disabled>Spin the wheel</button>
@@ -188,10 +204,10 @@ details summary { cursor: pointer; font-weight: 800; }
     <section class="card">
       <h2>Today</h2>
       <div class="stat">
-        <div><b id="s-spins">0</b><span class="muted">spins</span></div>
-        <div><b id="s-wins">0</b><span class="muted">prizes won</span></div>
-        <div><b id="s-left">0</b><span class="muted">prizes left today</span></div>
-        <div><b id="s-odds">0%</b><span class="muted">chance next spin</span></div>
+        <div><b id="s-spins">0</b><span>Spins</span></div>
+        <div><b id="s-wins">0</b><span>Prizes won</span></div>
+        <div><b id="s-left">0</b><span>Left today</span></div>
+        <div><b id="s-odds">0%</b><span>Next-spin chance</span></div>
       </div>
       <div class="row"><label for="expected">Players expected today</label><input type="number" id="expected" min="1" value="40"></div>
       <p class="muted">Each spin's chance of winning is prizes left today divided by players still to spin. Prizes spread across the day and don't run out early. Tuesday's unclaimed prizes roll over to Wednesday.</p>
@@ -224,34 +240,35 @@ details summary { cursor: pointer; font-weight: 800; }
 
 <div class="modal" id="modal" hidden>
   <div class="modal-card" id="modal-card">
-    <div class="eyebrow" id="m-eyebrow">Winner</div>
+    <div class="eyebrow" id="m-eyebrow">You've won</div>
     <div class="big" id="m-title"></div>
     <p id="m-text"></p>
     <div class="claim" id="m-claim"></div>
-    <button class="btn btn-go" id="m-close">Next player</button>
+    <button class="btn btn-ig" id="m-close">Next player</button>
   </div>
 </div>
 
 <script src="https://cdnjs.cloudflare.com/ajax/libs/qrcode-generator/1.4.4/qrcode.min.js"></script>
 <script>
 // ---- Settings ----
-const INSTAGRAM_URL = "https://www.instagram.com/womenoncourse/";
+const INSTAGRAM_URL = "https://www.instagram.com/womenoncoursegolf/";
 const FACEBOOK_URL = ""; // add the Facebook page link here once it's set up
 
 // Prize stock split across the two days. Tuesday's leftovers roll into Wednesday.
 const PRIZES = [
-  { id: "hamper", label: "Luxury hamper", short: "HAMPER", tue: 1, wed: 0 },
-  { id: "p30",    label: "30% off",       short: "30% OFF", tue: 0, wed: 1 },
-  { id: "p20",    label: "20% off",       short: "20% OFF", tue: 2, wed: 2 },
-  { id: "p10",    label: "10% off",       short: "10% OFF", tue: 5, wed: 5 },
-  { id: "cap",    label: "Cap",           short: "CAP",     tue: 0, wed: 1 },
-  { id: "balls",  label: "Sleeve of balls", short: "BALLS", tue: 1, wed: 0 },
-  { id: "marker", label: "Ball marker",   short: "MARKER",  tue: 1, wed: 0 },
+  { id: "hamper", label: "Luxury hamper",   short: "HAMPER",  tue: 1, wed: 0 },
+  { id: "p30",    label: "30% off",         short: "30% OFF", tue: 0, wed: 1 },
+  { id: "p20",    label: "20% off",         short: "20% OFF", tue: 2, wed: 2 },
+  { id: "p10",    label: "10% off",         short: "10% OFF", tue: 5, wed: 5 },
+  { id: "cap",    label: "Cap",             short: "CAP",     tue: 0, wed: 1 },
+  { id: "balls",  label: "Sleeve of balls", short: "BALLS",   tue: 1, wed: 0 },
+  { id: "marker", label: "Ball marker",     short: "MARKER",  tue: 1, wed: 0 },
 ];
 const MISS = { id: "miss", short: "BIRDIE NEXT TIME" };
 // Wheel order, with prizes spaced out between misses
 const SEGMENTS = ["p10", "miss", "balls", "p20", "miss", "hamper", "p10", "marker", "miss", "p30", "cap", "p20"];
-const SEG_COLORS = ["#B0185E", "#FFFFFF", "#1F6B4A", "#7E0F43", "#FFFFFF", "#E3A82B", "#B0185E", "#1F6B4A", "#FFFFFF", "#7E0F43", "#E3A82B", "#1F6B4A"];
+const NAVY = "#1F2A44", PEARL = "#F9F6F1", GOLD = "#9E7A38", NAVY_SOFT = "#34405E";
+const SEG_COLORS = [NAVY, PEARL, GOLD, NAVY_SOFT, PEARL, GOLD, NAVY, NAVY_SOFT, PEARL, GOLD, NAVY, NAVY_SOFT];
 
 // ---- Storage (per device) ----
 const store = {
@@ -312,22 +329,21 @@ function drawWheel() {
     const a0 = -Math.PI / 2 + i * step - step / 2;
     const prize = PRIZES.find(p => p.id === id);
     const gone = prize && leftToday(prize) === 0;
-    ctx.beginPath(); ctx.moveTo(r, r); ctx.arc(r, r, r - 6, a0, a0 + step); ctx.closePath();
-    ctx.fillStyle = gone ? "#E6DDE2" : SEG_COLORS[i]; ctx.fill();
-    ctx.strokeStyle = "#33102F"; ctx.lineWidth = 3; ctx.stroke();
+    ctx.beginPath(); ctx.moveTo(r, r); ctx.arc(r, r, r - 10, a0, a0 + step); ctx.closePath();
+    ctx.fillStyle = gone ? "#E6DCCB" : SEG_COLORS[i]; ctx.fill();
+    ctx.strokeStyle = GOLD; ctx.lineWidth = 2; ctx.stroke();
     ctx.save(); ctx.translate(r, r); ctx.rotate(a0 + step / 2);
-    const light = SEG_COLORS[i] === "#FFFFFF" || SEG_COLORS[i] === "#E3A82B" || gone;
-    ctx.fillStyle = light ? "#33102F" : "#FFFFFF";
+    ctx.fillStyle = (SEG_COLORS[i] === PEARL || gone) ? NAVY : PEARL;
     ctx.textAlign = "right"; ctx.textBaseline = "middle";
     const label = gone ? "ALL WON" : (prize ? prize.short : MISS.short);
     if (label.length > 10) {
-      ctx.font = "800 26px Figtree, sans-serif";
-      const [a, ...b] = label.split(" ");
-      ctx.fillText(a + " " + (b[0] || ""), r - 40, -14); ctx.fillText(b.slice(1).join(" "), r - 40, 16);
-    } else { ctx.font = "800 36px Figtree, sans-serif"; ctx.fillText(label, r - 40, 0); }
+      ctx.font = "600 24px Montserrat, sans-serif";
+      const words = label.split(" ");
+      ctx.fillText(words.slice(0, 2).join(" "), r - 44, -14); ctx.fillText(words.slice(2).join(" "), r - 44, 16);
+    } else { ctx.font = "700 36px 'Playfair Display', Georgia, serif"; ctx.fillText(label, r - 44, 0); }
     ctx.restore();
   });
-  ctx.beginPath(); ctx.arc(r, r, r - 4, 0, Math.PI * 2); ctx.lineWidth = 8; ctx.strokeStyle = "#B0185E"; ctx.stroke();
+  ctx.beginPath(); ctx.arc(r, r, r - 5, 0, Math.PI * 2); ctx.lineWidth = 10; ctx.strokeStyle = GOLD; ctx.stroke();
 }
 
 function pickOutcome() {
@@ -350,8 +366,7 @@ function spin() {
   const target = 360 - idx * step + jitter;
   const current = ((rotation % 360) + 360) % 360;
   rotation += 360 * 6 + ((target - current + 360) % 360);
-  const wheel = document.getElementById("wheel");
-  wheel.style.transform = `rotate(${rotation}deg)`;
+  document.getElementById("wheel").style.transform = `rotate(${rotation}deg)`;
   const dur = matchMedia("(prefers-reduced-motion: reduce)").matches ? 900 : 5300;
   setTimeout(() => finish(outcome), dur);
 }
@@ -362,8 +377,6 @@ function finish(outcome) {
   state.spins.push({ day, prize: outcome, claim, at: new Date().toISOString() });
   save();
   const prize = PRIZES.find(p => p.id === outcome);
-  const card = document.getElementById("modal-card");
-  card.classList.toggle("lose", !prize);
   document.getElementById("m-eyebrow").textContent = prize ? "You've won" : "So close";
   document.getElementById("m-title").textContent = prize ? prize.label : "Birdie next time";
   document.getElementById("m-text").textContent = prize
@@ -389,13 +402,12 @@ function renderHost() {
     const l = leftToday(p);
     return `<tr><td>${p.label}</td><td class="num">${p.tue}</td><td class="num">${p.wed}</td><td class="num">${wonCount(p.id)}</td><td class="num"><span class="left-pill ${l ? "" : "zero"}">${l}</span></td></tr>`;
   }).join("");
-  const log = document.getElementById("log");
   const rows = state.spins.slice().reverse().map(s => {
     const p = PRIZES.find(x => x.id === s.prize);
     const t = new Date(s.at).toLocaleTimeString([], { hour: "2-digit", minute: "2-digit" });
     return `<div><span>${s.day === "tue" ? "Tue" : "Wed"} ${t}</span><span>${p ? p.label : "No prize"}</span><span>${s.claim || ""}</span></div>`;
   });
-  log.innerHTML = rows.length ? rows.join("") : `<p class="muted">No spins yet.</p>`;
+  document.getElementById("log").innerHTML = rows.length ? rows.join("") : `<p class="muted">No spins yet.</p>`;
   document.getElementById("spin").disabled = spinning || !document.getElementById("followed").checked;
   drawWheel();
 }
