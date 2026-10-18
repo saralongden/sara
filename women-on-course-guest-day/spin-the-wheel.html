@@ -48,7 +48,7 @@ p { margin: 0; }
 .mark .on::before, .mark .on::after { content: ""; flex: 1; height: 1px; background: var(--gold); }
 .mark .on span { font-family: var(--script); color: var(--gold); font-size: clamp(2.2rem, 10vw, 2.8rem); line-height: 1; }
 .title-band { background: var(--navy); color: var(--pearl); border-radius: 4px; padding: 22px 20px; text-align: center; display: grid; gap: 10px; }
-.title-band h1 { font-size: 2.1rem; }
+.title-band h1 { font-size: clamp(1.6rem, 8vw, 2.1rem); letter-spacing: .03em; }
 .title-band p { opacity: .9; font-size: .92rem; }
 .dates { display: flex; flex-wrap: wrap; gap: 8px; justify-content: center; }
 .chip { border: 1px solid var(--gold); color: var(--pearl); border-radius: 2px; padding: 4px 12px; font-size: .72rem; letter-spacing: .16em; text-transform: uppercase; font-weight: 600; }
@@ -105,7 +105,7 @@ footer a { color: var(--muted); font-size: .78rem; }
 .panel .mark .on span { color: var(--gold-bright); }
 .big-title { display: grid; gap: .6vmin; }
 .big-title .eyebrow { font-size: 1.7vmin; color: var(--gold-bright); }
-.big-title h1 { font-size: 7.4vmin; font-weight: 900; line-height: 1; }
+.big-title h1 { font-size: 6.2vmin; letter-spacing: .03em; font-weight: 900; line-height: 1; }
 .big-title .when { font-size: 1.6vmin; letter-spacing: .24em; text-transform: uppercase; opacity: .85; }
 .scan { display: grid; grid-template-columns: auto minmax(0, 1fr); gap: 2.4vmin; align-items: center; text-align: left; background: rgba(249,246,241,.06); border: 1px solid rgba(217,182,106,.5); padding: 2vmin; }
 .scan img { width: 24vmin; height: 24vmin; display: block; border: .5vmin solid var(--pearl); }
@@ -184,7 +184,7 @@ details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-sp
 
   <section class="title-band">
     <div class="eyebrow">Member Guest Day</div>
-    <h1>Spin the Wheel</h1>
+    <h1>SPIN THE WHEEL</h1>
     <p>Follow us, unlock your spin pass, then take your turn on the big screen to win up to 40% off women's apparel.</p>
     <div class="dates"><span class="chip">Tue 20 October</span><span class="chip">Wed 21 October</span></div>
   </section>
@@ -256,7 +256,7 @@ details summary { cursor: pointer; font-weight: 600; font-size: .8rem; letter-sp
     </div>
     <div class="big-title">
       <div class="eyebrow">Member Guest Day</div>
-      <h1>Spin the Wheel</h1>
+      <h1>SPIN THE WHEEL</h1>
       <div class="when" id="when">Tuesday 20 &amp; Wednesday 21 October</div>
     </div>
     <div class="scan">
