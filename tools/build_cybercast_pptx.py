@@ -39,7 +39,7 @@ text(cx - 100, 595, 600, 45, "SINCE 2004", "Montserrat", 25, GOLD, spacing=9, al
 rect(100, 690, 2280, 320, fill=NAVY)
 text(100, 720, 2280, 70, "MEMBER GUEST DAY", "Montserrat", 48, GOLD_B, bold=True, spacing=16)
 text(100, 775, 2280, 170, "SPIN THE WHEEL", "Playfair Display", 150, PEARL, bold=True)
-text(100, 935, 2280, 50, "TUESDAY 20 OCTOBER 2026  &  WEDNESDAY 21 OCTOBER 2026", "Montserrat", 34, PEARL, spacing=8)
+text(100, 935, 2280, 50, "Tuesday 20 October 2026 and Wednesday 21 October 2026", "Montserrat", 44, PEARL)
 # Offer
 text(150, 1050, 2180, 100, "Follow us, Scan the QR code and", "Playfair Display", 76, NAVY, bold=True)
 text(150, 1145, 2180, 115, "WIN up to 40% off all Women's apparel", "Playfair Display", 92, GOLD, bold=True)
