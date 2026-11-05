@@ -1,0 +1,85 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>The New Course Look</title>
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,400;0,500;0,600;1,400;1,500&family=Montserrat:wght@400;500;600&display=swap" rel="stylesheet">
+<style>
+  /* Women on Course — Pearl colourway. Elements marked data-x are exported to the editable PPTX. */
+  :root { --pearl:#F8F5F1; --navy:#1F2A44; --gold:#9E7A38; --tint:#EFE9DF; --line:#D9C9A8; --grey:#5C6273; }
+  * { box-sizing:border-box; margin:0; padding:0; }
+  html, body { background:#ddd; }
+  .post { position:relative; width:1080px; height:1350px; background:var(--pearl); color:var(--navy); font-family:'Montserrat',sans-serif; overflow:hidden; }
+  .abs { position:absolute; }
+  .rule { position:absolute; height:2px; background:var(--gold); }
+  .caps { font-family:'Montserrat',sans-serif; text-transform:uppercase; white-space:nowrap; }
+  .serif { font-family:'Playfair Display',serif; white-space:nowrap; }
+
+  /* logo lockup */
+  .logo-small { top:78px; left:0; width:1080px; text-align:center; font-size:15px; letter-spacing:.42em; color:var(--gold); font-weight:500; }
+  .women { top:100px; left:0; width:1080px; text-align:center; font-size:66px; font-weight:500; line-height:1; letter-spacing:.02em; }
+  .on { top:166px; left:0; width:1080px; text-align:center; font-size:42px; font-style:italic; color:var(--gold); line-height:1; }
+  .course { top:212px; left:0; width:1080px; text-align:center; font-size:66px; font-weight:500; line-height:1; letter-spacing:.02em; }
+  .edit { top:298px; left:0; width:1080px; text-align:center; font-size:17px; letter-spacing:.32em; font-weight:600; }
+
+  .hero { top:372px; left:67px; width:440px; height:520px; border-radius:18px; background:var(--tint); padding:12px; }
+  .hero img { width:100%; height:100%; object-fit:cover; border-radius:10px; display:block; }
+
+  .kicker { top:430px; left:575px; font-size:17px; letter-spacing:.22em; font-weight:600; color:var(--gold); }
+  .headline { top:464px; left:572px; font-size:52px; font-weight:600; line-height:1.02; letter-spacing:.02em; text-transform:uppercase; }
+  .lead { top:628px; left:575px; font-size:29px; line-height:1.45; }
+  .small { top:740px; left:575px; font-size:17px; line-height:1.6; color:var(--grey); white-space:normal; }
+  .tag { top:820px; left:575px; font-size:16px; line-height:1.6; letter-spacing:.14em; font-weight:600; color:var(--gold); white-space:normal; }
+
+  .coll { top:916px; left:67px; font-size:16px; letter-spacing:.22em; font-weight:600; color:var(--gold); }
+
+  .card { top:956px; width:216px; height:280px; border-radius:16px; background:#F9F6F1; border:1.5px solid #E6DCCB; overflow:hidden; }
+  .card img { position:absolute; left:20px; top:18px; width:176px; height:212px; object-fit:contain; }
+  .card .lab { position:absolute; left:0; bottom:0; width:100%; height:48px; background:var(--tint); }
+  .card-label { top:1201px; width:216px; text-align:center; font-size:12.5px; letter-spacing:.14em; font-weight:600; }
+
+  .foot-name { top:1270px; left:0; width:1080px; text-align:center; font-size:30px; font-weight:600; letter-spacing:.06em; text-transform:uppercase; }
+  .foot-sub { top:1310px; left:0; width:1080px; text-align:center; font-size:11.5px; letter-spacing:.3em; font-weight:500; color:var(--gold); }
+</style>
+</head>
+<body>
+<div class="post" id="post">
+  <div class="rule" data-x="rect" style="top:58px; left:67px; width:946px;"></div>
+
+  <div class="abs caps logo-small" data-x="text">Golf Fashion</div>
+  <div class="abs serif women" data-x="text">WOMEN</div>
+  <div class="rule" data-x="rect" style="top:189px; left:418px; width:72px; height:1.5px;"></div>
+  <div class="abs serif on" data-x="text">on</div>
+  <div class="rule" data-x="rect" style="top:189px; left:590px; width:72px; height:1.5px;"></div>
+  <div class="abs serif course" data-x="text">COURSE</div>
+  <div class="abs caps edit" data-x="text">The New Season Edit</div>
+  <div class="rule" data-x="rect" style="top:338px; left:432px; width:216px;"></div>
+
+  <div class="abs hero" data-x="rect"><img data-x="image" data-fit="cover" src="img/hero.jpg" alt=""></div>
+
+  <div class="abs caps kicker" data-x="text">The New</div>
+  <div class="abs serif headline" data-x="text">Course<br>Look</div>
+  <div class="rule" data-x="rect" style="top:600px; left:575px; width:438px;"></div>
+  <div class="abs serif lead" data-x="text">Fresh colour.<br>Timeless style.</div>
+  <div class="abs small" data-x="text">From the first tee<br>to the clubhouse.</div>
+  <div class="abs caps tag" data-x="text">On-course style,<br>effortlessly.</div>
+
+  <div class="abs caps coll" data-x="text">The Collection</div>
+  <div class="rule" data-x="rect" style="top:926px; left:300px; width:713px; height:1.5px; background:var(--line);"></div>
+
+  <div class="abs card" data-x="rect" style="left:67px;"><img data-x="image" data-fit="contain" src="img/blue-stripe.jpg" alt=""><div class="lab" data-x="rect"></div></div>
+  <div class="abs card" data-x="rect" style="left:310px;"><img data-x="image" data-fit="contain" src="img/pink-stripe.jpg" alt=""><div class="lab" data-x="rect"></div></div>
+  <div class="abs card" data-x="rect" style="left:553px;"><img data-x="image" data-fit="contain" src="img/skort.jpg" alt=""><div class="lab" data-x="rect"></div></div>
+  <div class="abs card" data-x="rect" style="left:797px;"><img data-x="image" data-fit="contain" src="img/burgundy-knit.jpg" alt=""><div class="lab" data-x="rect"></div></div>
+  <div class="abs caps card-label" data-x="text" style="left:67px;">Blue Stripe</div>
+  <div class="abs caps card-label" data-x="text" style="left:310px;">Pink Stripe</div>
+  <div class="abs caps card-label" data-x="text" style="left:553px;">Skort</div>
+  <div class="abs caps card-label" data-x="text" style="left:797px;">Burgundy Knit</div>
+
+  <div class="rule" data-x="rect" style="top:1258px; left:67px; width:946px;"></div>
+  <div class="abs serif foot-name" data-x="text">Women on Course</div>
+  <div class="abs caps foot-sub" data-x="text">Discover the latest arrivals in the Pro Shop</div>
+</div>
+</body>
+</html>
