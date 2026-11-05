@@ -1,0 +1,17 @@
+<!doctype html>
+<html><head><meta charset="utf-8">
+<link href="https://fonts.googleapis.com/css2?family=Playfair+Display:ital,wght@0,500;0,600;1,500&display=swap" rel="stylesheet">
+<style>
+  /* Women on Course QR — navy modules, gold ring badge with WOC */
+  html,body{margin:0;background:transparent}
+  .qr{position:relative;width:2000px;height:2000px;background:var(--bg,#F8F5F1)}
+  .qr img{position:absolute;inset:160px;width:1680px;height:1680px}
+  .badge{position:absolute;left:50%;top:50%;width:470px;height:470px;transform:translate(-50%,-50%);border-radius:50%;
+         background:#F8F5F1;box-shadow:0 0 0 22px #F8F5F1;display:flex;align-items:center;justify-content:center}
+  .badge::before{content:"";position:absolute;inset:18px;border-radius:50%;border:9px solid #9E7A38}
+  .badge::after{content:"";position:absolute;inset:44px;border-radius:50%;border:3px solid #9E7A38;opacity:.55}
+  .woc{font-family:'Playfair Display',serif;font-weight:600;font-size:150px;letter-spacing:.02em;color:#1F2A44;line-height:1;margin-top:-6px}
+  .woc i{font-style:italic;font-weight:500;color:#9E7A38;font-size:132px;margin:0 2px}
+  body.clear .qr{--bg:transparent}
+</style></head>
+<body><div class="qr" id="qr"><img src="qr-modules.svg" alt=""><div class="badge"><div class="woc">W<i>o</i>C</div></div></div></body></html>
