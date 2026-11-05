@@ -65,13 +65,14 @@ for e in d["els"]:
         buf = io.BytesIO(); im.save(buf, "JPEG", quality=95); buf.seek(0)
         slide.shapes.add_picture(buf, px(x), px(y), px(w), px(h))
     else:
-        pad = 40 if e["align"] != "center" else 0
-        tb = slide.shapes.add_textbox(px(e["x"]), px(e["y"]), px(e["w"] + pad), px(e["h"]))
-        tf = tb.text_frame; tf.word_wrap = True; tf.vertical_anchor = MSO_ANCHOR.TOP
-        tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
+        # one text box per line, so every line is its own editable element
         col, _ = rgb(e["color"])
         for i, line in enumerate(e["text"].split("\n")):
-            p = tf.paragraphs[0] if i == 0 else tf.add_paragraph()
+            pad = 40 if e["align"] != "center" else 0
+            tb = slide.shapes.add_textbox(px(e["x"]), px(e["y"] + i * e["lineHeight"]), px(e["w"] + pad), px(e["lineHeight"]))
+            tf = tb.text_frame; tf.word_wrap = True; tf.vertical_anchor = MSO_ANCHOR.TOP
+            tf.margin_left = tf.margin_right = tf.margin_top = tf.margin_bottom = 0
+            p = tf.paragraphs[0]
             p.alignment = PP_ALIGN.CENTER if e["align"] == "center" else PP_ALIGN.LEFT
             p.line_spacing = Pt(e["lineHeight"] * 0.75)
             r = p.add_run(); r.text = line
